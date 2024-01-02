@@ -1,7 +1,7 @@
 from classes.HomeWindow import HomeWindow
 from classes.ConfigManager import ConfigManager
 
-#!// bug - kada se close-a GameWindow u sred igre, javi exception
+#! bug - kada se close-a GameWindow u sred igre, javi exception
 #! bug - extended display, ako se window prikaze izvan dozovljenih granica (displaya) -> vrati ga
 
 #todo//: dodati razine - easy, normal, hard, extra hard? (settings)

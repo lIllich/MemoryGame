@@ -20,9 +20,9 @@ class HomeWindow:
         b_exit = tk.Button(self.home_window, text="Izlaz", font=font.normal_text, command=self.save_and_exit)
 
         l_title.place(x=200, y=35)
-        b_play.place(x=30, y=100, width=200, height=50)
-        b_settings.place(x=30, y=155, width=200, height=50)
-        b_exit.place(x=30, y=210, width=200, height=50)
+        b_play.place(x=80, y=100, width=200, height=50)
+        b_settings.place(x=80, y=155, width=200, height=50)
+        b_exit.place(x=80, y=210, width=200, height=50)
 
         l_razina = tk.Label(self.home_window, text="Razina:", font=font.subtitle_text)
         l_razina.place(x=350, y=115)

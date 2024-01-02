@@ -48,7 +48,7 @@ class GameWindow:
             self.buttons.append(row)
 
     def hover(self, i, j):
-        self.hover_id = self.game_window.after(1000, self.select_card, i, j)
+        self.hover_id = self.game_window.after(self.cm.configs["on_hover_reveal_card_ms"], self.select_card, i, j)
 
     def cancel_hover(self):
         self.game_window.after_cancel(self.hover_id)
@@ -60,7 +60,7 @@ class GameWindow:
         elif self.second is None:
             self.second = (i, j)
             self.buttons[i][j].config(text=self.letters[i * self.cols + j])
-            self.game_window.after(1000, self.check_match)
+            self.game_window.after(self.cm.configs["on_hover_reveal_card_ms"], self.check_match)
 
     def check_match(self):
         i1, j1 = self.first
