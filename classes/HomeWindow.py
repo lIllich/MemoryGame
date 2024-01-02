@@ -9,12 +9,20 @@ class HomeWindow:
         self.cm = cm
 
         self.home_window.title("Home - MemoryGame")
+        self.home_window.resizable(False, False)
         self.home_window.geometry(self.cm.configs["home_window"])
         self.home_window.protocol("WM_DELETE_WINDOW", self.save_and_exit)
 
-        tk.Button(self.home_window, text="Igraj", command=self.play_now).pack()
-        tk.Button(self.home_window, text="Postavke", command=self.open_settings).pack()
-        tk.Button(self.home_window, text="Izlaz", command=self.save_and_exit).pack()
+        l_title = tk.Label(self.home_window, text="MemoryGame", font=("", 20, 'bold'))
+        b_play = tk.Button(self.home_window, text="Igraj", font=("", 14), command=self.play_now)
+        b_settings = tk.Button(self.home_window, text="Postavke", font=("", 14), command=self.open_settings)
+        b_exit = tk.Button(self.home_window, text="Izlaz", font=("", 14), command=self.save_and_exit)
+
+        l_title.place(x=200, y=35)
+        b_play.place(x=30, y=100, width=200, height=50)
+        b_settings.place(x=30, y=155, width=200, height=50)
+        b_exit.place(x=30, y=210, width=200, height=50)
+
         self.home_window.mainloop()
 
     def save_and_exit(self):

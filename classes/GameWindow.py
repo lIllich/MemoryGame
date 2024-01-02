@@ -22,6 +22,10 @@ class GameWindow:
         self.create_buttons()
 
     def create_buttons(self):
+        if self.rows * self.cols > 52:
+            self.cm.configs["rows"] = self.rows = 4
+            self.cm.configs["cols"] = self.cols = 13
+            self.cm.save_configs()
         for i in range(self.rows):
             self.game_window.grid_rowconfigure(i, weight=1)
             row = []
