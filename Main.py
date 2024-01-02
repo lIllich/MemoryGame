@@ -5,7 +5,7 @@ from classes.ConfigManager import ConfigManager
 #! bug - extended display, ako se window prikaze izvan dozovljenih granica (displaya) -> vrati ga
 
 #todo//: dodati razine - easy, normal, hard, extra hard? (settings)
-#todo: dodati varijablnog intervala za označavanje card (settings)
+#todo//: dodati varijablnog intervala za označavanje card (settings)
 #todo: dodati spremanje scora po razinama, u json se spremaju 10 najbojih po razini
 #todo: manager za dodavanje kategorija/kartica - text&text, text&slika, slika&slika
 #todo: manager za konvertiranje slika u ogovarajuci format
