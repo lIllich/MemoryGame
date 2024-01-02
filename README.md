@@ -1,2 +1,2 @@
 # MemoryGame
-Igra Memory prilagođena za korištenje EyeTrackera
+Igra Memory prilagođena za korištenje EyeTrackerom
