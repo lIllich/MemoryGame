@@ -13,19 +13,28 @@ class GameWindow:
         self.buttons = []
         self.first = None
         self.second = None
-        self.rows = self.cm.configs["rows"]
-        self.cols = self.cm.configs["cols"]
-        self.letters = list(string.ascii_uppercase[:self.rows * self.cols // 2]) * 2
+        self.rows = None
+        self.cols = None
+        self.letters = None
         self.end_time = None
-        self.after_id = None
-        random.shuffle(self.letters)        
+        self.after_id = None        
         self.create_buttons()
 
     def create_buttons(self):
-        if self.rows * self.cols > 52:
+        if self.cm.configs["game_dificulty"] == 1:
             self.cm.configs["rows"] = self.rows = 4
-            self.cm.configs["cols"] = self.cols = 13
-            self.cm.save_configs()
+            self.cm.configs["cols"] = self.cols = 6
+        elif self.cm.configs["game_dificulty"] == 2:
+            self.cm.configs["rows"] = self.rows = 5
+            self.cm.configs["cols"] = self.cols = 9
+        else:
+            self.cm.configs["rows"] = self.rows = 3
+            self.cm.configs["cols"] = self.cols = 4
+        
+        self.cm.save_configs()
+        self.letters = list(string.ascii_uppercase[:self.rows * self.cols // 2]) * 2
+        random.shuffle(self.letters)
+
         for i in range(self.rows):
             self.game_window.grid_rowconfigure(i, weight=1)
             row = []

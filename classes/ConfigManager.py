@@ -25,7 +25,7 @@ class ConfigManager:
             "settings_window": "300x200",
             "end_game_window": "300x200+52+52",
             "rows": 4,
-            "cols": 13,
+            "cols": 3,
             "font_name": "Helvetica",
             "font_size": 14,
             "game_dificulty": 1,
