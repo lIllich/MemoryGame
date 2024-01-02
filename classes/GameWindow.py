@@ -75,6 +75,8 @@ class GameWindow:
     def save_and_exit(self):
         self.cm.configs["game_window"] = self.game_window.geometry()
         self.cm.save_configs()
+        if self.after_id:  # Check if after_id exists
+            self.game_window.after_cancel(self.after_id)  # Cancel the callback
         self.destroy()
 
     def run_game(self):
