@@ -20,13 +20,14 @@ class ConfigManager:
 
     def new_config_file(self):
         self.configs = {
-            "home_window": "300x200",
-            "game_window": "500x300",
+            "home_window": "600x300+2789+414",
+            "game_window": "1536x793+-71+-13",
             "settings_window": "300x200",
-            "end_game_window": "300x200",
-            "rows": 2, 
-            "cols": 2,
-            "font_name": "Helvetica", 
-            "font_size": 14
+            "end_game_window": "300x200+52+52",
+            "rows": 4,
+            "cols": 13,
+            "font_name": "Helvetica",
+            "font_size": 14,
+            "game_dificulty": 1,
         }
         self.save_configs()
