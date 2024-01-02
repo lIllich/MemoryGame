@@ -27,7 +27,7 @@ class ConfigManager:
             "rows": 4,
             "cols": 3,
             "font_name": "Helvetica",
-            "font_size": 14,
+            "font_size": 25,
             "game_dificulty": 1,
         }
         self.save_configs()

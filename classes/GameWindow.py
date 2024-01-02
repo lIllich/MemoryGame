@@ -26,7 +26,7 @@ class GameWindow:
             self.cm.configs["cols"] = self.cols = 6
         elif self.cm.configs["game_dificulty"] == 2:
             self.cm.configs["rows"] = self.rows = 5
-            self.cm.configs["cols"] = self.cols = 9
+            self.cm.configs["cols"] = self.cols = 8
         else:
             self.cm.configs["rows"] = self.rows = 3
             self.cm.configs["cols"] = self.cols = 4
@@ -36,10 +36,10 @@ class GameWindow:
         random.shuffle(self.letters)
 
         for i in range(self.rows):
-            self.game_window.grid_rowconfigure(i, weight=1)
+            self.game_window.grid_rowconfigure(i, weight=2)
             row = []
             for j in range(self.cols):
-                self.game_window.grid_columnconfigure(j, weight=1)
+                self.game_window.grid_columnconfigure(j, weight=2)
                 button = tk.Button(self.game_window, text='', width=2, font=(self.cm.configs["font_name"], self.cm.configs["font_size"]))
                 button.grid(row=i, column=j, sticky='nsew')
                 button.bind('<Enter>', lambda event, i=i, j=j: self.hover(i, j))
@@ -69,8 +69,8 @@ class GameWindow:
             self.buttons[i1][j1].config(text='')
             self.buttons[i2][j2].config(text='')
         else:
-            self.buttons[i1][j1].config(state='disabled', bg='green')
-            self.buttons[i2][j2].config(state='disabled', bg='green')
+            self.buttons[i1][j1].config(state='disabled', bg=self.from_rgb((67, 163, 91)), disabledforeground="white")
+            self.buttons[i2][j2].config(state='disabled', bg=self.from_rgb((67, 163, 91)), disabledforeground="white")
         self.first = self.second = None
         if all(button['state'] == 'disabled' for row in self.buttons for button in row):
             self.end_time = time.time()
@@ -82,8 +82,6 @@ class GameWindow:
         if self.after_id:  # Check if after_id exists
             self.game_window.after_cancel(self.after_id)  # Cancel the callback
         self.game_window.destroy()
-
-
 
     def save_and_exit(self):
         self.cm.configs["game_window"] = self.game_window.geometry()
@@ -97,3 +95,6 @@ class GameWindow:
         self.game_window.mainloop()
         if self.end_time is not None:
             return self.end_time - self.start_time
+
+    def from_rgb(self, rgb):
+        return '#%02x%02x%02x' % rgb
