@@ -1,0 +1,82 @@
+{
+    "cateogry": [
+        {
+            "id": 1,
+            "name": "brojevi",
+            "single_or_pair": 1,
+            "cards": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        },
+        {
+            "id": 2,
+            "name": "velika slova",
+            "single_or_pair": 1,
+            "cards": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Č", "Ć", "Đ", "DŽ", "Š", "Ž", "LJ", "NJ"
+            ]
+        },
+        {
+            "id": 3,
+            "name": "velika i mala slova",
+            "single_or_pair": 2,
+            "cards": [
+                {"value1": "A", "value2": "a"},
+                {"value1": "B", "value2": "b"},
+                {"value1": "C", "value2": "c"},
+                {"value1": "D", "value2": "d"},
+                {"value1": "E", "value2": "e"},
+                {"value1": "F", "value2": "f"},
+                {"value1": "G", "value2": "g"},
+                {"value1": "H", "value2": "h"},
+                {"value1": "I", "value2": "i"},
+                {"value1": "J", "value2": "j"},
+                {"value1": "K", "value2": "k"},
+                {"value1": "L", "value2": "l"},
+                {"value1": "M", "value2": "m"},
+                {"value1": "N", "value2": "n"},
+                {"value1": "O", "value2": "o"},
+                {"value1": "P", "value2": "p"},
+                {"value1": "Q", "value2": "q"},
+                {"value1": "R", "value2": "r"},
+                {"value1": "S", "value2": "s"},
+                {"value1": "T", "value2": "t"},
+                {"value1": "U", "value2": "u"},
+                {"value1": "V", "value2": "v"},
+                {"value1": "W", "value2": "w"},
+                {"value1": "X", "value2": "x"},
+                {"value1": "Y", "value2": "y"},
+                {"value1": "Z", "value2": "z"},
+                {"value1": "Č", "value2": "č"},
+                {"value1": "Ć", "value2": "ć"},
+                {"value1": "Đ", "value2": "đ"},
+                {"value1": "Š", "value2": "š"},
+                {"value1": "Ž", "value2": "ž"}
+            ]
+        },
+        {
+            "id": 4,
+            "name": "životinje",
+            "single_or_pair": 1,
+            "pics": [
+                {"name": "Pas", "img":  ""},
+                {"name": "Mačka", "img":  ""},
+                {"name": "Zec", "img":  ""},
+                {"name": "Slon", "img":  ""},
+                {"name": "Lav", "img":  ""},
+                {"name": "Tigar", "img":  ""},
+                {"name": "Medvjed", "img":  ""},
+                {"name": "Majmun", "img":  ""},
+                {"name": "Žirafa", "img":  ""},
+                {"name": "Zebra", "img":  ""},
+                {"name": "Konj", "img":  ""},
+                {"name": "Pingvin", "img":  ""},
+                {"name": "Patka", "img":  ""},
+                {"name": "Ovca", "img":  ""},
+                {"name": "Svinja", "img":  ""},
+                {"name": "Žaba", "img":  ""},
+                {"name": "Leptir", "img":  ""},
+                {"name": "Ptica", "img":  ""},
+                {"name": "Riba", "img":  ""},
+                {"name": "Krava", "img":  ""}
+            ]
+        }
+    ]
+}

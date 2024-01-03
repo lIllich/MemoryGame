@@ -10,7 +10,7 @@ from classes.ConfigManager import ConfigManager
 #todo: manager za dodavanje kategorija/kartica - text&text, text&slika, slika&slika
 #todo: manager za konvertiranje slika u ogovarajuci format
 #todo: custom - kategorije i kartice se spremaju u json (text - id, value; slika - id, url), slika se sprema u neki subfolder
-#todo: starter - poseban json sa gotovim(predinstaliranim) kategorijama, npr. slova, brojevi, neke slike...
+#todo//: starter - poseban json sa gotovim(predinstaliranim) kategorijama, npr. slova, brojevi, neke slike...
 
 def main():
     config_file = "config.json"
