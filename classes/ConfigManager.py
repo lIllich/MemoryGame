@@ -23,12 +23,15 @@ class ConfigManager:
             "home_window": "600x300+2789+414",
             "game_window": "939x511+296+145",
             "settings_window": "1277x618+131+70",
-            "end_game_window": "300x200+52+52",
+            "end_game_window": "489x384+52+52",
             "rows": 4,
             "cols": 3,
             "font_name": "Helvetica",
             "font_size": 25,
             "game_dificulty": 1,
             "on_hover_reveal_card_ms": 1000,
+            "difficulty_1": [],
+            "difficulty_2": [],
+            "difficulty_3": []
         }
         self.save_configs()

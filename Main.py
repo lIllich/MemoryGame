@@ -6,7 +6,7 @@ from classes.ConfigManager import ConfigManager
 
 #todo//: dodati razine - easy, normal, hard, extra hard? (settings)
 #todo//: dodati varijablnog intervala za označavanje card (settings)
-#todo: dodati spremanje scora po razinama, u json se spremaju 10 najbojih po razini
+#todo//: dodati spremanje scora po razinama, u json se spremaju 10 najbojih po razini
 #todo: manager za dodavanje kategorija/kartica - text&text, text&slika, slika&slika
 #todo: manager za konvertiranje slika u ogovarajuci format
 #todo: custom - kategorije i kartice se spremaju u json (text - id, value; slika - id, url), slika se sprema u neki subfolder
