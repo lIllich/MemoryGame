@@ -29,9 +29,9 @@ class ConfigManager:
             "font_name": "Helvetica",
             "font_size": 25,
             "game_dificulty": 1,
-            "on_hover_reveal_card_ms": 1000,
+            "on_hover_reveal_card_ms": 500,
+            "difficulty_0": [],
             "difficulty_1": [],
-            "difficulty_2": [],
-            "difficulty_3": []
+            "difficulty_2": []
         }
         self.save_configs()
