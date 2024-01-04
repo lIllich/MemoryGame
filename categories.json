@@ -3,14 +3,14 @@
         {
             "id": 1,
             "name": "velika slova",
-            "iterate": "single_string",
+            "iterate": "single_string_",
             "cards": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Č", "Ć", "Đ", "DŽ", "Š", "Ž", "LJ", "NJ"
             ]
         },
         {
             "id": 2,
             "name": "velika i mala slova",
-            "iterate": "double_string",
+            "iterate": "double_string_",
             "cards": [
                 {"value1": "A", "value2": "a"},
                 {"value1": "B", "value2": "b"},

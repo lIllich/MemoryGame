@@ -1,7 +1,8 @@
 import tkinter as tk
-from classes.Imagemanager import right_format_and_size
 from classes.CategoryManager import CategoryManager
+from classes.Card import Card
 
+import numpy as np
 import random
 import string
 import time
@@ -23,10 +24,7 @@ class GameWindow:
         self.cols = None
         self.letters = []
         self.end_time = None
-        self.after_id = None 
-        
-        self.image1 = tk.PhotoImage(file="red.png")
-        self.image2 = tk.PhotoImage(file="blue.png")
+        self.after_id = None
 
         self.set_grid_params()
         self.create_list()
@@ -45,19 +43,24 @@ class GameWindow:
         self.cm.save_configs()
 
     def create_list(self):
+        id = 0
         for category in self.category_manager.category['category']:
             if category['iterate'] == 'single_string':
                 for card in category['cards']:
-                    self.letters.append(card)
+                    self.letters.append((Card(id, 'string', card), Card(id, 'string', card)))
+                    id += 1
             elif category['iterate'] == 'double_string':
                 for card in category['cards']:
-                    self.letters.append(card['value2'])
+                    self.letters.append((Card(id, 'string', card["value1"]), Card(id, 'string', card["value2"])))
+                    id += 1
             elif category['iterate'] == 'name_and_image':
                 for card in category['cards']:
-                    self.letters.append(card['name'])
+                    self.letters.append((Card(id, 'string', card["name"]), Card(id, 'img_path', card["img"])))
+                    id += 1
 
         random.shuffle(self.letters)
-        self.letters = self.letters[: self.rows * self.cols // 2] * 2
+        self.letters = self.letters[: self.rows * self.cols //2]
+        self.letters = [x for tuple in self.letters for x in tuple]
         random.shuffle(self.letters)
 
 
@@ -81,24 +84,31 @@ class GameWindow:
         self.game_window.after_cancel(self.hover_id)
 
     def select_card(self, i, j):
+        self.game_window.update_idletasks() # chat napisao: Note that you need to call update_idletasks() before getting the dimensions to ensure that any pending resize operations are carried out and you get the correct dimensions.
+        # self.letters[i * self.cols + j].load_picture(self.buttons[i][j].winfo_width(), self.buttons[i][j].winfo_height())
+
         if self.first is None:
             self.first = (i, j)
-            self.buttons[i][j].config(text=self.letters[i * self.cols + j])
-            # self.buttons[i][j].config(image=self.letters[i * self.cols + j])
+            if self.letters[i * self.cols + j].type == "string":
+                self.buttons[i][j].config(text=self.letters[i * self.cols + j].data)
+            else:
+                self.buttons[i][j].config(image=self.letters[i * self.cols + j].data)
         elif self.second is None:
             self.second = (i, j)
-            self.buttons[i][j].config(text=self.letters[i * self.cols + j])
-            # self.buttons[i][j].config(image=self.letters[i * self.cols + j])
+            if self.letters[i * self.cols + j].type == "string":
+                self.buttons[i][j].config(text=self.letters[i * self.cols + j].data)
+            else:
+                self.buttons[i][j].config(image=self.letters[i * self.cols + j].data)
             self.game_window.after(self.cm.configs["on_hover_reveal_card_ms"], self.check_match)
 
     def check_match(self):
         i1, j1 = self.first
         i2, j2 = self.second
-        if self.letters[i1 * self.cols + j1] != self.letters[i2 * self.cols + j2]:
+        if self.letters[i1 * self.cols + j1].id != self.letters[i2 * self.cols + j2].id:
             self.buttons[i1][j1].config(text='')
-            # self.buttons[i1][j1].config(image='')
+            self.buttons[i1][j1].config(image='')
             self.buttons[i2][j2].config(text='')
-            # self.buttons[i2][j2].config(image='')
+            self.buttons[i2][j2].config(image='')
         else:
             self.buttons[i1][j1].config(state='disabled', bg=self.from_rgb((67, 163, 91)), disabledforeground="white")
             self.buttons[i2][j2].config(state='disabled', bg=self.from_rgb((67, 163, 91)), disabledforeground="white")
