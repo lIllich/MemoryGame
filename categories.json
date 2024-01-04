@@ -1,16 +1,16 @@
 {
-    "cateogry": [
+    "category": [
         {
             "id": 1,
             "name": "velika slova",
-            "single_or_pair": 1,
+            "iterate": "single_string",
             "cards": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Č", "Ć", "Đ", "DŽ", "Š", "Ž", "LJ", "NJ"
             ]
         },
         {
             "id": 2,
             "name": "velika i mala slova",
-            "single_or_pair": 2,
+            "iterate": "double_string",
             "cards": [
                 {"value1": "A", "value2": "a"},
                 {"value1": "B", "value2": "b"},
@@ -48,28 +48,28 @@
         {
             "id": 3,
             "name": "životinje",
-            "single_or_pair": 2,
-            "pics": [
-                {"name": "Pas", "img":  ""},
-                {"name": "Mačka", "img":  ""},
-                {"name": "Zec", "img":  ""},
-                {"name": "Slon", "img":  ""},
-                {"name": "Lav", "img":  ""},
-                {"name": "Tigar", "img":  ""},
-                {"name": "Medvjed", "img":  ""},
-                {"name": "Majmun", "img":  ""},
-                {"name": "Žirafa", "img":  ""},
-                {"name": "Zebra", "img":  ""},
-                {"name": "Konj", "img":  ""},
-                {"name": "Pingvin", "img":  ""},
-                {"name": "Patka", "img":  ""},
-                {"name": "Ovca", "img":  ""},
-                {"name": "Svinja", "img":  ""},
-                {"name": "Žaba", "img":  ""},
-                {"name": "Leptir", "img":  ""},
-                {"name": "Ptica", "img":  ""},
-                {"name": "Riba", "img":  ""},
-                {"name": "Krava", "img":  ""}
+            "iterate": "name_and_image",
+            "cards": [
+                {"name": "Pas", "img":  "slike/zivotinje/pug.png"},
+                {"name": "Mačka", "img":  "slike/zivotinje/macka.png"},
+                {"name": "Zec", "img":  "slike/zivotinje/zec.png"},
+                {"name": "Slon", "img":  "slike/zivotinje/slon.png"},
+                {"name": "Lav", "img":  "slike/zivotinje/lav.png"},
+                {"name": "Tigar", "img":  "slike/zivotinje/tigar.png"},
+                {"name": "Medvjed", "img":  "slike/zivotinje/medo.png"},
+                {"name": "Majmun", "img":  "slike/zivotinje/majmun.png"},
+                {"name": "Žirafa", "img":  "slike/zivotinje/zirafa.png"},
+                {"name": "Zebra", "img":  "slike/zivotinje/zebra.png"},
+                {"name": "Konj", "img":  "slike/zivotinje/konj.png"},
+                {"name": "Pingvin", "img":  "slike/zivotinje/linux.png"},
+                {"name": "Patka", "img":  "slike/zivotinje/patka.png"},
+                {"name": "Ovca", "img":  "slike/zivotinje/ovca.png"},
+                {"name": "Svinja", "img":  "slike/zivotinje/svinjko.png"},
+                {"name": "Žaba", "img":  "slike/zivotinje/zaba.png"},
+                {"name": "Leptir", "img":  "slike/zivotinje/leptir.png"},
+                {"name": "Ptica", "img":  "slike/zivotinje/ptica.png"},
+                {"name": "Riba", "img":  "slike/zivotinje/riba.png"},
+                {"name": "Krava", "img":  "slike/zivotinje/krava.png"}
             ]
         }
     ]

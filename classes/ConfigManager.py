@@ -18,7 +18,7 @@ class ConfigManager:
             json.dump(self.configs, f)
             
 
-    def new_config_file(self):
+    def _new_config_file(self):
         self.configs = {
             "home_window": "600x300+2789+414",
             "game_window": "939x511+296+145",
