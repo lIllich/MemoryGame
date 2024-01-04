@@ -4,6 +4,7 @@ from classes.ConfigManager import ConfigManager
 #! bug - kada se close-a GameWindow u sred igre, javi exception
 #! bug - extended display, ako se window prikaze izvan dozovljenih granica (displaya) -> vrati ga
 #! bug - kada se na kartici koja je pronađena (zelena) mouse pointer zadrži dulje od 1sek i potom makne, u buttonu text posetane ''
+#! bug - pomicanje grida kako se slike otvaraju
 
 #todo//: dodati razine - easy, normal, hard, extra hard? (settings)
 #todo//: dodati varijablnog intervala za označavanje card (settings)
