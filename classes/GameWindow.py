@@ -1,4 +1,6 @@
 import tkinter as tk
+from tkinter import PhotoImage
+
 import random
 import string
 import time
@@ -17,7 +19,12 @@ class GameWindow:
         self.cols = None
         self.letters = None
         self.end_time = None
-        self.after_id = None        
+        self.after_id = None 
+        
+        self.image1 = tk.PhotoImage(file="red.png")
+        self.image2 = tk.PhotoImage(file="blue.png")
+
+              
         self.create_buttons()
 
     def create_buttons(self):
@@ -28,11 +35,12 @@ class GameWindow:
             self.cm.configs["rows"] = self.rows = 5
             self.cm.configs["cols"] = self.cols = 8
         else:
-            self.cm.configs["rows"] = self.rows = 3
-            self.cm.configs["cols"] = self.cols = 4
+            self.cm.configs["rows"] = self.rows = 2
+            self.cm.configs["cols"] = self.cols = 2
         
         self.cm.save_configs()
-        self.letters = list(string.ascii_uppercase[:self.rows * self.cols // 2]) * 2
+        # self.letters = list(string.ascii_uppercase[:self.rows * self.cols // 2]) * 2
+        self.letters = list([self.image1, self.image1, self.image2, self.image2])
         random.shuffle(self.letters)
 
         for i in range(self.rows):
@@ -40,7 +48,8 @@ class GameWindow:
             row = []
             for j in range(self.cols):
                 self.game_window.grid_columnconfigure(j, weight=2)
-                button = tk.Button(self.game_window, text='', width=2, font=(self.cm.configs["font_name"], self.cm.configs["font_size"]))
+                # button = tk.Button(self.game_window, text='', width=2, font=(self.cm.configs["font_name"], self.cm.configs["font_size"]))
+                button = tk.Button(self.game_window, image='', width=2, font=(self.cm.configs["font_name"], self.cm.configs["font_size"]))
                 button.grid(row=i, column=j, sticky='nsew')
                 button.bind('<Enter>', lambda event, i=i, j=j: self.hover(i, j))
                 button.bind('<Leave>', lambda event: self.cancel_hover())
@@ -56,18 +65,22 @@ class GameWindow:
     def select_card(self, i, j):
         if self.first is None:
             self.first = (i, j)
-            self.buttons[i][j].config(text=self.letters[i * self.cols + j])
+            # self.buttons[i][j].config(text=self.letters[i * self.cols + j])
+            self.buttons[i][j].config(image=self.letters[i * self.cols + j])
         elif self.second is None:
             self.second = (i, j)
-            self.buttons[i][j].config(text=self.letters[i * self.cols + j])
+            # self.buttons[i][j].config(text=self.letters[i * self.cols + j])
+            self.buttons[i][j].config(image=self.letters[i * self.cols + j])
             self.game_window.after(self.cm.configs["on_hover_reveal_card_ms"], self.check_match)
 
     def check_match(self):
         i1, j1 = self.first
         i2, j2 = self.second
         if self.letters[i1 * self.cols + j1] != self.letters[i2 * self.cols + j2]:
-            self.buttons[i1][j1].config(text='')
-            self.buttons[i2][j2].config(text='')
+            # self.buttons[i1][j1].config(text='')
+            self.buttons[i1][j1].config(image='')
+            # self.buttons[i2][j2].config(text='')
+            self.buttons[i2][j2].config(image='')
         else:
             self.buttons[i1][j1].config(state='disabled', bg=self.from_rgb((67, 163, 91)), disabledforeground="white")
             self.buttons[i2][j2].config(state='disabled', bg=self.from_rgb((67, 163, 91)), disabledforeground="white")
