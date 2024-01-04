@@ -1,8 +1,8 @@
 import tkinter as tk
-
+from classes.FontManager import FontManager as font
 class EndGameWindow:
     def __init__(self, cm, elapsed_time):
-        self.cm =  cm
+        self.cm = cm
         self.end_game = tk.Tk()
         self.end_game.resizable(False, False)
         self.elapsed_time = elapsed_time
@@ -13,20 +13,20 @@ class EndGameWindow:
 
         if self.elapsed_time is None:
             tk.Label(self.end_game, text=f"Igra je prekinuta").pack()
-        else:   
-            tk.Label(self.end_game, text=f"Tvoj rezultat: {self.elapsed_time:.4f} sekunde").pack()
+        else:
+            tk.Label(self.end_game, text=f"Tvoj rezultat: {self.elapsed_time:.4f} sekunde", font=font.title_text).pack()
             self.update_score_table()
 
         self.show_score_table()
 
         # Create a frame for the buttons
         button_frame = tk.Frame(self.end_game)
-        button_frame.pack(pady=10)  # Add some padding to move the buttons away from the score table
+        button_frame.pack(pady=10)
 
         # Create the buttons with the same width
         tk.Button(button_frame, text="Igraj ponovno", command=self.play_again, width=20).pack(side=tk.LEFT, padx=5)
-        tk.Button(button_frame, text="Izlaz", command=self.exit_game, width=20).pack(side=tk.LEFT, padx=5)
-        
+        tk.Button(button_frame, text="Povratak na početnu", command=self.exit_game, width=20).pack(side=tk.LEFT, padx=5)
+
         self.end_game.mainloop()
 
     def play_again(self):
@@ -40,6 +40,13 @@ class EndGameWindow:
         self.cm.configs["end_game_window"] = self.end_game.geometry()
         self.cm.save_configs()
         self.end_game.destroy()
+        self.create_home_window()
+
+    def create_home_window(self):
+        # Create a new instance of HomeWindow
+        from classes.HomeWindow import HomeWindow  # Import HomeWindow here
+        home_window = HomeWindow(self.cm)
+        home_window.home_window.mainloop()
 
     def save_and_exit(self):
         self.button_pressed = -1
@@ -54,7 +61,7 @@ class EndGameWindow:
         tk.Label(self.end_game, text=f"Top 10 najboljih rezultata za razinu '{self.razina_num_to_word(self.difficulty_level)}':").pack()
         for i, score in enumerate(scores[:10]):
             if score == self.elapsed_time:
-                label = tk.Label(self.end_game, text=f"{i+1}. {score:.4f} sekunde (tvoj rezultat)", fg="red")
+                label = tk.Label(self.end_game, text=f"{i+1}. {score:.4f} sekunde (tvoj rezultat)", fg="red", font=font.title_text)
                 label.pack()
             else:
                 tk.Label(self.end_game, text=f"{i+1}. {score:.4f} sekunde").pack()

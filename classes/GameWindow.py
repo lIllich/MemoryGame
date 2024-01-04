@@ -28,8 +28,8 @@ class GameWindow:
             self.cm.configs["rows"] = self.rows = 5
             self.cm.configs["cols"] = self.cols = 8
         else:
-            self.cm.configs["rows"] = self.rows = 3
-            self.cm.configs["cols"] = self.cols = 4
+            self.cm.configs["rows"] = self.rows = 2
+            self.cm.configs["cols"] = self.cols = 2
         
         self.cm.save_configs()
         self.letters = list(string.ascii_uppercase[:self.rows * self.cols // 2]) * 2

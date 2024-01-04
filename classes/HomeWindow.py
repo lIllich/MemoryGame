@@ -40,6 +40,11 @@ class HomeWindow:
 
         self.home_window.mainloop()
 
+    def create_home_window(self):
+        # Create a new instance of HomeWindow
+        home_window = HomeWindow(self.cm)
+        home_window.home_window.mainloop()
+
     def save_and_exit(self):
         self.cm.configs["home_window"] = self.home_window.geometry()
         self.cm.configs["game_dificulty"] = self.game_difficulty.get()
