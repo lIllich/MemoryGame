@@ -6,8 +6,8 @@ class Card:
         self.type = type
         self.data = data
         
-        self.load_picture(100, 100)
+        self.load_picture()
 
-    def load_picture(self, width, height):
+    def load_picture(self):
         if self.type == 'img_path':
-            self.data = right_format_and_size(self.data, width, height)
+            self.data = right_format_and_size(self.data)
