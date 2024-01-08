@@ -29,6 +29,11 @@ class GameWindow:
         self.end_time = None
         self.after_id = None
 
+        self.image_item1 = None
+        self.image_item2 = None
+        self.text_item1 = None
+        self.text_item2 = None
+
         self.set_grid_params()
         self.create_letter_list()
         # self.create_button_grid()
@@ -89,9 +94,10 @@ class GameWindow:
                 canvas = tk.Canvas(self.game_window, width=self.cell_size, height=self.cell_size)
                 canvas.grid(row=i, column=j)
                 cell = canvas.create_rectangle(0, 0, self.cell_size, self.cell_size, fill='white')
-                canvas.tag_bind(cell, "<Enter>", lambda event, i=i, j=j: self.hover(i, j))
-                canvas.tag_bind(cell, "<Leave>", lambda event: self.cancel_hover())
+                canvas.bind("<Enter>", lambda event, i=i, j=j: self.hover(i, j))
+                canvas.bind("<Leave>", lambda event: self.cancel_hover())
                 self.canvases[i][j] = canvas
+
 
     def hover(self, i, j):
         self.hover_id = self.game_window.after(self.cm.configs["on_hover_reveal_card_ms"], self.select_card, i, j)
@@ -100,42 +106,40 @@ class GameWindow:
         self.game_window.after_cancel(self.hover_id)
 
     def select_card(self, i, j):
-        self.game_window.update_idletasks()
+        # self.game_window.update_idletasks()
         if self.first is None:
             self.first = (i, j)
             if self.cards[i * self.cols + j].type == "string":
-                self.canvases[i][j].create_text(50, 50, text=self.cards[i * self.cols + j].data)
+                self.text_item1 = self.canvases[i][j].create_text(50, 50, text=self.cards[i * self.cols + j].data)
             else:
-                # Convert the PhotoImage object to a PIL Image object
-                image = self.cards[i * self.cols + j].data
-                self.image = ImageTk.PhotoImage(image)
-                self.canvases[i][j].create_image(0, 0, image=self.image, anchor='nw')
+                self.image_item1 = self.canvases[i][j].create_image(0, 0, image=self.cards[i * self.cols + j].data, anchor='nw')
         elif self.second is None:
             self.second = (i, j)
             if self.cards[i * self.cols + j].type == "string":
-                self.canvases[i][j].create_text(50, 50, text=self.cards[i * self.cols + j].data)
+                self.text_item2 = self.canvases[i][j].create_text(50, 50, text=self.cards[i * self.cols + j].data)
             else:
-                # Convert the PhotoImage object to a PIL Image object
-                image = self.cards[i * self.cols + j].data
-                self.image = ImageTk.PhotoImage(image)
-                self.canvases[i][j].create_image(0, 0, image=self.image, anchor='nw')
+                self.image_item2 = self.canvases[i][j].create_image(0, 0, image=self.cards[i * self.cols + j].data, anchor='nw')
             self.game_window.after(self.cm.configs["on_hover_reveal_card_ms"], self.check_match)
 
     def check_match(self):
         i1, j1 = self.first
         i2, j2 = self.second
-        if self.cards[i1 * self.cols + j1].id != self.cards[i2 * self.cols + j2].id:
-            self.canvases[i1][j1].itemconfig(tk.ALL, text='')
-            self.canvases[i1][j1].itemconfig(tk.ALL, image='')
-            self.canvases[i2][j2].itemconfig(tk.ALL, text='')
-            self.canvases[i2][j2].itemconfig(tk.ALL, image='')
+        if self.cards[i1 * self.cols + j1].id == self.cards[i2 * self.cols + j2].id:
+            self.canvases[i1][j1].config(bg=self.from_rgb((67, 163, 91)))
+            self.canvases[i2][j2].config(bg=self.from_rgb((67, 163, 91)))
+            if all(canvas.cget('bg') == self.from_rgb((67, 163, 91)) for row in self.canvases for canvas in row):
+                self.end_time = time.time()
+                self.after_id = self.game_window.after(1000, self.destroy)  # Store the ID
         else:
-            self.canvases[i1][j1].config(state='disabled', bg=self.from_rgb((67, 163, 91)), disabledforeground="white")
-            self.canvases[i2][j2].config(state='disabled', bg=self.from_rgb((67, 163, 91)), disabledforeground="white")
-        self.first = self.second = None
-        if all(canvas['state'] == 'disabled' for row in self.canvases for canvas in row):
-            self.end_time = time.time()
-            self.after_id = self.game_window.after(1000, self.destroy)  # Store the ID
+            if self.text_item1 is not None:
+                self.canvases[i1][j1].delete(self.text_item1)
+            if self.text_item2 is not None:
+                self.canvases[i2][j2].delete(self.text_item2)
+            if self.image_item1 is not None:
+                self.canvases[i1][j1].delete(self.image_item1)
+            if self.image_item2 is not None:
+                self.canvases[i2][j2].delete(self.image_item2)
+        self.first = self.second = self.text_item1 = self.text_item2 = self.image_item1 = self.image_item2 = None
 
     def destroy(self):
         self.cm.configs["game_window"] = self.game_window.geometry()

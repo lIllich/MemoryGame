@@ -9,11 +9,11 @@ def right_format_and_size(path):
         # Calculate new dimensions
         if aspect_ratio > 1:
             # Image is wider than it is tall
-            new_width = 100
+            new_width = 160
             new_height = round(new_width / aspect_ratio)
         else:
             # Image is taller than it is wide, or is a square
-            new_height = 100
+            new_height = 160
             new_width = round(new_height * aspect_ratio)
 
         # # Save the resized image
