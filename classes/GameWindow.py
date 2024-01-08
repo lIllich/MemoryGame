@@ -4,9 +4,7 @@ from classes.Card import Card
 
 import numpy as np
 import random
-import string
 import time
-from PIL import Image, ImageTk 
 
 class GameWindow:
     def __init__(self, cm):
@@ -72,26 +70,26 @@ class GameWindow:
         self.cards = [x for tuple in self.cards for x in tuple]
         random.shuffle(self.cards)
 
-
-    def create_button_grid(self):
-        for i in range(self.rows):
-            self.game_window.grid_rowconfigure(i, weight=2)
-            row = []
-            for j in range(self.cols):
-                self.game_window.grid_columnconfigure(j, weight=2)
-                button = tk.Button(self.game_window, text='', image='', width=0, borderwidth=1, highlightthickness=0, font=(self.cm.configs["font_name"], self.cm.configs["font_size"]))
-                button.grid(row=i, column=j, sticky='nsew')
-                button.bind('<Enter>', lambda event, i=i, j=j: self.hover(i, j))
-                button.bind('<Leave>', lambda event: self.cancel_hover())
-                row.append(button)
-            self.buttons.append(row)
+    # ? vise ne koristimo
+    # def create_button_grid(self):
+    #     for i in range(self.rows):
+    #         self.game_window.grid_rowconfigure(i, weight=2)
+    #         row = []
+    #         for j in range(self.cols):
+    #             self.game_window.grid_columnconfigure(j, weight=2)
+    #             button = tk.Button(self.game_window, text='', image='', width=0, borderwidth=1, highlightthickness=0, font=(self.cm.configs["font_name"], self.cm.configs["font_size"]))
+    #             button.grid(row=i, column=j, sticky='nsew')
+    #             button.bind('<Enter>', lambda event, i=i, j=j: self.hover(i, j))
+    #             button.bind('<Leave>', lambda event: self.cancel_hover())
+    #             row.append(button)
+    #         self.buttons.append(row)
 
     def create_canvas_grid(self):
         self.cell_size = 160 #todo prebaciti u config 
         self.canvases = [[None]*self.cols for _ in range(self.rows)]
         for i in range(self.rows):
             for j in range(self.cols):
-                canvas = tk.Canvas(self.game_window, width=self.cell_size, height=self.cell_size)
+                canvas = tk.Canvas(self.game_window, width=self.cell_size, height=self.cell_size, highlightthickness=1, highlightbackground="black")
                 canvas.grid(row=i, column=j)
                 cell = canvas.create_rectangle(0, 0, self.cell_size, self.cell_size, fill='white')
                 canvas.bind("<Enter>", lambda event, i=i, j=j: self.hover(i, j))
