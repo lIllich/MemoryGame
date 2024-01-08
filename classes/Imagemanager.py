@@ -19,3 +19,8 @@ def right_format_and_size(path):
         # # Save the resized image
         # img.save('resized_image.png')
         return ImageTk.PhotoImage(Image.open(path).resize((new_width, new_height), Image.LANCZOS))
+    
+def tint_card_image(img):
+    print('debug', img.size)
+    tint = Image.new('RGBA', img.size, (67, 163, 91, 128)) # todo -  prebaciti rgb dio u config ili classu
+    return Image.alpha_composite(img, tint)
