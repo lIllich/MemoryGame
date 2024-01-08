@@ -127,12 +127,14 @@ class GameWindow:
         if self.cards[i1 * self.cols + j1].id == self.cards[i2 * self.cols + j2].id:
             self.canvases[i1][j1].itemconfig(self.cells[i1][j1], fill=self.from_rgb((67, 163, 91)))  # Change the color of the cell
             self.canvases[i2][j2].itemconfig(self.cells[i2][j2], fill=self.from_rgb((67, 163, 91)))  # Change the color of the cell
-            if self.canvases[i1][j1].type(item_id) == 'image':
-                self.cards[i1 * self.cols + j1].tint_picture()
-                self.canvases[i1][j1].create_image(80, 80, image=self.cards[i1 * self.cols + j1].data, anchor='center')
-            if self.canvases[i2][j2].type(item_id) == 'image':
-                self.cards[i2 * self.cols + j2].tint_picture()
-                self.canvases[i2][j2].create_image(80, 80, image=self.cards[i2 * self.cols + j2].data, anchor='center')
+            for item in self.canvases[i1][j1].find_all():
+                if self.canvases[i1][j1].type(item) == 'image':
+                    self.cards[i1 * self.cols + j1].tint_picture()
+                    self.canvases[i1][j1].create_image(80, 80, image=self.cards[i1 * self.cols + j1].data, anchor='center')
+            for item in self.canvases[i2][j2].find_all():
+                if self.canvases[i2][j2].type(item) == 'image':
+                    self.cards[i2 * self.cols + j2].tint_picture()
+                    self.canvases[i2][j2].create_image(80, 80, image=self.cards[i2 * self.cols + j2].data, anchor='center')
             if all(self.canvases[i][j].itemcget(self.cells[i][j], 'fill') == self.from_rgb((67, 163, 91)) for i in range(self.rows) for j in range(self.cols)):
                 self.end_time = time.time()
                 self.after_id = self.game_window.after(1000, self.destroy)  # Store the ID

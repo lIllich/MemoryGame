@@ -1,26 +1,18 @@
 from PIL import Image, ImageTk
 
 def right_format_and_size(path):
-    # Open an image file
     with Image.open(path) as img:
-        # Get the aspect ratio of the image
         aspect_ratio = img.width / img.height
-
-        # Calculate new dimensions
         if aspect_ratio > 1:
-            # Image is wider than it is tall
             new_width = 160
             new_height = round(new_width / aspect_ratio)
         else:
-            # Image is taller than it is wide, or is a square
             new_height = 160
             new_width = round(new_height * aspect_ratio)
+        pil_image = img.resize((new_width, new_height), Image.LANCZOS)
+        return ImageTk.PhotoImage(pil_image), pil_image  # Modify this line
 
-        # # Save the resized image
-        # img.save('resized_image.png')
-        return ImageTk.PhotoImage(Image.open(path).resize((new_width, new_height), Image.LANCZOS))
-    
-def tint_card_image(img):
-    print('debug', img.size)
-    tint = Image.new('RGBA', img.size, (67, 163, 91, 128)) # todo -  prebaciti rgb dio u config ili classu
-    return Image.alpha_composite(img, tint)
+def tint_card_image(pil_image):
+    # print('debug', pil_image.size)
+    tint = Image.new('RGBA', pil_image.size, (67, 163, 91, 128))
+    return ImageTk.PhotoImage(Image.alpha_composite(pil_image, tint))
