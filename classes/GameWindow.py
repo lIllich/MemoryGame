@@ -87,14 +87,16 @@ class GameWindow:
     def create_canvas_grid(self):
         self.cell_size = 160 #todo prebaciti u config 
         self.canvases = [[None]*self.cols for _ in range(self.rows)]
+        self.cells = [[None]*self.cols for _ in range(self.rows)]  # Store the IDs of the cells
         for i in range(self.rows):
             for j in range(self.cols):
-                canvas = tk.Canvas(self.game_window, width=self.cell_size, height=self.cell_size, highlightthickness=1, highlightbackground="black")
+                canvas = tk.Canvas(self.game_window, width=self.cell_size, height=self.cell_size)
                 canvas.grid(row=i, column=j)
                 cell = canvas.create_rectangle(0, 0, self.cell_size, self.cell_size, fill='white')
                 canvas.bind("<Enter>", lambda event, i=i, j=j: self.hover(i, j))
                 canvas.bind("<Leave>", lambda event: self.cancel_hover())
                 self.canvases[i][j] = canvas
+                self.cells[i][j] = cell  # Store the ID of the cell
 
 
     def hover(self, i, j):
@@ -108,24 +110,24 @@ class GameWindow:
         if self.first is None:
             self.first = (i, j)
             if self.cards[i * self.cols + j].type == "string":
-                self.text_item1 = self.canvases[i][j].create_text(50, 50, text=self.cards[i * self.cols + j].data)
+                self.text_item1 = self.canvases[i][j].create_text(80, 80, text=self.cards[i * self.cols + j].data, anchor='center')
             else:
-                self.image_item1 = self.canvases[i][j].create_image(0, 0, image=self.cards[i * self.cols + j].data, anchor='nw')
+                self.image_item1 = self.canvases[i][j].create_image(80, 80, image=self.cards[i * self.cols + j].data, anchor='center')
         elif self.second is None:
             self.second = (i, j)
             if self.cards[i * self.cols + j].type == "string":
-                self.text_item2 = self.canvases[i][j].create_text(50, 50, text=self.cards[i * self.cols + j].data)
+                self.text_item2 = self.canvases[i][j].create_text(80, 80, text=self.cards[i * self.cols + j].data, anchor='center')
             else:
-                self.image_item2 = self.canvases[i][j].create_image(0, 0, image=self.cards[i * self.cols + j].data, anchor='nw')
+                self.image_item2 = self.canvases[i][j].create_image(80, 80, image=self.cards[i * self.cols + j].data, anchor='center')
             self.game_window.after(self.cm.configs["on_hover_reveal_card_ms"], self.check_match)
 
     def check_match(self):
         i1, j1 = self.first
         i2, j2 = self.second
         if self.cards[i1 * self.cols + j1].id == self.cards[i2 * self.cols + j2].id:
-            self.canvases[i1][j1].config(bg=self.from_rgb((67, 163, 91)))
-            self.canvases[i2][j2].config(bg=self.from_rgb((67, 163, 91)))
-            if all(canvas.cget('bg') == self.from_rgb((67, 163, 91)) for row in self.canvases for canvas in row):
+            self.canvases[i1][j1].itemconfig(self.cells[i1][j1], fill=self.from_rgb((67, 163, 91)))  # Change the color of the cell
+            self.canvases[i2][j2].itemconfig(self.cells[i2][j2], fill=self.from_rgb((67, 163, 91)))  # Change the color of the cell
+            if all(self.canvases[i][j].itemcget(self.cells[i][j], 'fill') == self.from_rgb((67, 163, 91)) for i in range(self.rows) for j in range(self.cols)):
                 self.end_time = time.time()
                 self.after_id = self.game_window.after(1000, self.destroy)  # Store the ID
         else:
