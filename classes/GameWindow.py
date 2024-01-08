@@ -12,10 +12,9 @@ class GameWindow:
         self.category_manager = CategoryManager("categories.json")
         
         self.category_manager.load_categories()
-
         self.game_window = tk.Tk()
+        self.game_window.resizable(False, False)
         self.game_window.title("Game - MemoryGame")
-        self.game_window.geometry(self.cm.configs["game_window"])
         self.game_window.protocol("WM_DELETE_WINDOW", self.save_and_exit)
         
         self.canvases = []
@@ -41,12 +40,15 @@ class GameWindow:
         if self.cm.configs["game_dificulty"] == 1:
             self.cm.configs["rows"] = self.rows = 4
             self.cm.configs["cols"] = self.cols = 6
+            self.game_window.geometry(self.cm.configs["game_window_difficulty_1"])
         elif self.cm.configs["game_dificulty"] == 2:
             self.cm.configs["rows"] = self.rows = 5
             self.cm.configs["cols"] = self.cols = 8
+            self.game_window.geometry(self.cm.configs["game_window_difficulty_2"])
         else:
-            self.cm.configs["rows"] = self.rows = 2
-            self.cm.configs["cols"] = self.cols = 2
+            self.cm.configs["rows"] = self.rows = 3
+            self.cm.configs["cols"] = self.cols = 4
+            self.game_window.geometry(self.cm.configs["game_window_difficulty_0"])
         self.cm.save_configs()
 
     def create_letter_list(self):
@@ -70,7 +72,7 @@ class GameWindow:
         self.cards = [x for tuple in self.cards for x in tuple]
         random.shuffle(self.cards)
 
-    # ? vise ne koristimo
+    # * vise ne koristimo
     # def create_button_grid(self):
     #     for i in range(self.rows):
     #         self.game_window.grid_rowconfigure(i, weight=2)
@@ -90,7 +92,7 @@ class GameWindow:
         self.cells = [[None]*self.cols for _ in range(self.rows)]  # Store the IDs of the cells
         for i in range(self.rows):
             for j in range(self.cols):
-                canvas = tk.Canvas(self.game_window, width=self.cell_size, height=self.cell_size)
+                canvas = tk.Canvas(self.game_window, width=self.cell_size, height=self.cell_size, highlightbackground="black", highlightthickness=0)
                 canvas.grid(row=i, column=j)
                 cell = canvas.create_rectangle(0, 0, self.cell_size, self.cell_size, fill='white')
                 canvas.bind("<Enter>", lambda event, i=i, j=j: self.hover(i, j))
@@ -127,6 +129,10 @@ class GameWindow:
         if self.cards[i1 * self.cols + j1].id == self.cards[i2 * self.cols + j2].id:
             self.canvases[i1][j1].itemconfig(self.cells[i1][j1], fill=self.from_rgb((67, 163, 91)))  # Change the color of the cell
             self.canvases[i2][j2].itemconfig(self.cells[i2][j2], fill=self.from_rgb((67, 163, 91)))  # Change the color of the cell
+            self.canvases[i1][j1].unbind("<Enter>")
+            self.canvases[i1][j1].unbind("<Leave>")
+            self.canvases[i2][j2].unbind("<Enter>")
+            self.canvases[i2][j2].unbind("<Leave>")
             for item in self.canvases[i1][j1].find_all():
                 if self.canvases[i1][j1].type(item) == 'image':
                     self.cards[i1 * self.cols + j1].tint_picture()
@@ -150,14 +156,24 @@ class GameWindow:
         self.first = self.second = self.text_item1 = self.text_item2 = self.image_item1 = self.image_item2 = None
 
     def destroy(self):
-        self.cm.configs["game_window"] = self.game_window.geometry()
+        if self.cm.configs["game_dificulty"] == 1:
+            self.cm.configs["game_window_difficulty_1"] = self.game_window.geometry()
+        elif self.cm.configs["game_dificulty"] == 2:
+            self.cm.configs["game_window_difficulty_2"] = self.game_window.geometry()
+        else:
+            self.cm.configs["game_window_difficulty_0"] = self.game_window.geometry()
         self.cm.save_configs()
         if self.after_id:  # Check if after_id exists
             self.game_window.after_cancel(self.after_id)  # Cancel the callback
         self.game_window.destroy()
 
     def save_and_exit(self):
-        self.cm.configs["game_window"] = self.game_window.geometry()
+        if self.cm.configs["game_dificulty"] == 1:
+            self.cm.configs["game_window_difficulty_1"] = self.game_window.geometry()
+        elif self.cm.configs["game_dificulty"] == 2:
+            self.cm.configs["game_window_difficulty_2"] = self.game_window.geometry()
+        else:
+            self.cm.configs["game_window_difficulty_0"] = self.game_window.geometry()
         self.cm.save_configs()
         if self.after_id:  # Check if after_id exists
             self.game_window.after_cancel(self.after_id)  # Cancel the callback

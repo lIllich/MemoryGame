@@ -13,6 +13,11 @@ def right_format_and_size(path):
         return ImageTk.PhotoImage(pil_image), pil_image  # Modify this line
 
 def tint_card_image(pil_image):
+    # Convert the image to 'RGBA' mode if necessary
+    if pil_image.mode != 'RGBA':
+        pil_image = pil_image.convert('RGBA')
+
     # print('debug', pil_image.size)
     tint = Image.new('RGBA', pil_image.size, (67, 163, 91, 128))
     return ImageTk.PhotoImage(Image.alpha_composite(pil_image, tint))
+
