@@ -20,23 +20,18 @@ class ConfigManager:
 
     def new_config_file(self):
         self.configs = {
-            "home_window": "600x300+2789+414",
-            "game_window_difficulty_2": "1313x820+2039+248",
-            "game_window_difficulty_1": "985x656+2039+248",
-            "game_window_difficulty_0": "656x493+2039+248",
-            "settings_window": "1277x618+114+82",
-            "end_game_window": "499x334+2647+468",
-            "rows": 5,
-            "cols": 8,
+            "home_window": "600x300",
+            "game_window": "939x511",
+            "settings_window": "1277x618",
+            "end_game_window": "489x384",
+            "rows": 4,
+            "cols": 3,
             "font_name": "Helvetica",
             "font_size": 25,
-            "game_dificulty": 2,
-            "on_hover_reveal_card_ms": 800,
-            "difficulty_0": [
-            ],
-            "difficulty_1": [
-            ],
-            "difficulty_2": [
-            ]
+            "game_dificulty": 1,
+            "on_hover_reveal_card_ms": 500,
+            "difficulty_0": [],
+            "difficulty_1": [],
+            "difficulty_2": []
         }
         self.save_configs()
