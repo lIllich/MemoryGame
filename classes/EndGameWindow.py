@@ -25,24 +25,23 @@ class EndGameWindow:
 
         # Create the buttons with the same width
         tk.Button(button_frame, text="Igraj ponovno", command=self.play_again, width=20).pack(side=tk.LEFT, padx=5)
-        tk.Button(button_frame, text="Izlaz", command=self.exit_game, width=20).pack(side=tk.LEFT, padx=5)
+        tk.Button(button_frame, text="Početni zaslon", command=self.home_window, width=20).pack(side=tk.LEFT, padx=5)
         
         self.end_game.mainloop()
 
+    def home_window(self):
+        self.button_pressed = 1
+        self.exit_game()
+
     def play_again(self):
         self.button_pressed = 0
-        self.cm.configs["end_game_window"] = self.end_game.geometry()
-        self.cm.save_configs()
-        self.end_game.destroy()
-
-    def exit_game(self):
-        self.button_pressed = 1
-        self.cm.configs["end_game_window"] = self.end_game.geometry()
-        self.cm.save_configs()
-        self.end_game.destroy()
+        self.exit_game()
 
     def save_and_exit(self):
         self.button_pressed = -1
+        self.exit_game()
+
+    def exit_game(self):
         self.cm.configs["end_game_window"] = self.end_game.geometry()
         self.cm.save_configs()
         self.end_game.destroy()
