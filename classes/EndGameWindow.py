@@ -1,4 +1,5 @@
 import tkinter as tk
+from classes.WindowManager import check_window_position
 
 class EndGameWindow:
     def __init__(self, cm, elapsed_time):
@@ -9,6 +10,7 @@ class EndGameWindow:
         self.difficulty_level = self.cm.configs["game_dificulty"]
         self.button_pressed = None
         self.end_game.geometry(self.cm.configs["end_game_window"])
+        check_window_position(self.end_game)
         self.end_game.protocol("WM_DELETE_WINDOW", self.save_and_exit)
 
         if self.elapsed_time is None:

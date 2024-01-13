@@ -6,6 +6,8 @@ import numpy as np
 import random
 import time
 
+from classes.WindowManager import check_window_position
+
 class GameWindow:
     def __init__(self, cm):
         self.cm = cm
@@ -49,6 +51,7 @@ class GameWindow:
             self.cm.configs["rows"] = self.rows = 3
             self.cm.configs["cols"] = self.cols = 4
             self.game_window.geometry(self.cm.configs["game_window_difficulty_0"])
+        check_window_position(self.game_window)
         self.cm.save_configs()
 
     def create_letter_list(self):

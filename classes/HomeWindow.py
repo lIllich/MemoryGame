@@ -3,6 +3,7 @@ from classes.SettingsWindow import SettingsWindow
 from classes.GameWindow import GameWindow
 from classes.EndGameWindow import EndGameWindow
 from classes.FontManager import FontManager as font
+from classes.WindowManager import check_window_position
 
 class HomeWindow:
     def __init__(self, cm):
@@ -12,6 +13,7 @@ class HomeWindow:
         self.home_window.title("Home - MemoryGame")
         self.home_window.resizable(False, False)
         self.home_window.geometry(self.cm.configs["home_window"])
+        check_window_position(self.home_window)
         self.home_window.protocol("WM_DELETE_WINDOW", self.save_and_exit)
         self.hw_ret_value = 0
 
