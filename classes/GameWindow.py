@@ -13,7 +13,7 @@ class GameWindow:
         
         self.category_manager.load_categories()
         self.game_window = tk.Tk()
-        self.game_window.resizable(False, False)
+        # self.game_window.resizable(False, False)
         self.game_window.title("Game - MemoryGame")
         self.game_window.protocol("WM_DELETE_WINDOW", self.save_and_exit)
         
