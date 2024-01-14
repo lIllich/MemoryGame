@@ -69,7 +69,10 @@
                 {"name": "Leptir", "img":  "slike/zivotinje/leptir.png"},
                 {"name": "Ptica", "img":  "slike/zivotinje/ptica.png"},
                 {"name": "Riba", "img":  "slike/zivotinje/riba.png"},
-                {"name": "Krava", "img":  "slike/zivotinje/krava.png"}
+                {"name": "Krava", "img":  "slike/zivotinje/krava.png"},
+                {"name": "Panda", "img": "slike/zivotinje/panda.png"}, 
+                {"name": "Papiga", "img": "slike/zivotinje/papiga.png"}
+
             ]
         }
     ]

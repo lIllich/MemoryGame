@@ -112,13 +112,13 @@ class GameWindow:
         if self.first is None:
             self.first = (i, j)
             if self.cards[i * self.cols + j].type == "string":
-                self.text_item1 = self.canvases[i][j].create_text(80, 80, text=self.cards[i * self.cols + j].data, anchor='center')
+                self.text_item1 = self.canvases[i][j].create_text(80, 80, text=self.cards[i * self.cols + j].data, anchor='center', font=("Arial", 20))
             else:
                 self.image_item1 = self.canvases[i][j].create_image(80, 80, image=self.cards[i * self.cols + j].data, anchor='center')
         elif self.second is None:
             self.second = (i, j)
             if self.cards[i * self.cols + j].type == "string":
-                self.text_item2 = self.canvases[i][j].create_text(80, 80, text=self.cards[i * self.cols + j].data, anchor='center')
+                self.text_item2 = self.canvases[i][j].create_text(80, 80, text=self.cards[i * self.cols + j].data, anchor='center', font=("Arial", 20))
             else:
                 self.image_item2 = self.canvases[i][j].create_image(80, 80, image=self.cards[i * self.cols + j].data, anchor='center')
             self.game_window.after(self.cm.configs["on_hover_reveal_card_ms"], self.check_match)
