@@ -2,9 +2,9 @@
     "category": [
         {
             "id": 1,
-            "name": "velika slova",
+            "name": "brojevi",
             "iterate": "single_string_",
-            "cards": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Č", "Ć", "Đ", "DŽ", "Š", "Ž", "LJ", "NJ"
+            "cards": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
             ]
         },
         {
