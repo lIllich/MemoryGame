@@ -64,7 +64,7 @@ class GameWindow:
                     id += 1
             elif category['iterate'] == 'name_and_image':
                 for card in category['cards']:
-                    self.cards.append((Card(id, 'string', card["name"]), Card(id, 'img_path', card["img"])))
+                    self.cards.append((Card(id, 'string', card["name"].upper()), Card(id, 'img_path', card["img"])))
                     id += 1
 
         random.shuffle(self.cards)

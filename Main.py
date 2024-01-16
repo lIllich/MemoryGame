@@ -13,7 +13,7 @@ from classes.ConfigManager import ConfigManager
 #todo: manager za konvertiranje slika u ogovarajuci format
 #todo: custom - kategorije i kartice se spremaju u json (text - id, value; slika - id, url), slika se sprema u neki subfolder
 #todo//: starter - poseban json sa gotovim(predinstaliranim) kategorijama, npr. slova, brojevi, neke slike...
-
+# todo// : velika slova
 def main():
     config_file = "config.json"
 
