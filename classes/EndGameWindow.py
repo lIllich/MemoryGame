@@ -87,7 +87,8 @@
 # gore prijasnji kod, dole kod od domagoja, kopirano iz njegove grane da ne moramo mergat
 
 import tkinter as tk
-from classes.FontManager import FontManager as font
+from classes.WindowManager import check_window_position
+
 class EndGameWindow:
     def __init__(self, cm, elapsed_time):
         self.cm = cm
@@ -97,6 +98,7 @@ class EndGameWindow:
         self.difficulty_level = self.cm.configs["game_dificulty"]
         self.button_pressed = None
         self.end_game.geometry(self.cm.configs["end_game_window"])
+        check_window_position(self.end_game)
         self.end_game.protocol("WM_DELETE_WINDOW", self.save_and_exit)
 
         if self.elapsed_time is None:
@@ -113,31 +115,23 @@ class EndGameWindow:
 
         # Create the buttons with the same width
         tk.Button(button_frame, text="Igraj ponovno", command=self.play_again, width=20).pack(side=tk.LEFT, padx=5)
-        tk.Button(button_frame, text="Povratak na početnu", command=self.exit_game, width=20).pack(side=tk.LEFT, padx=5)
-
+        tk.Button(button_frame, text="Početni zaslon", command=self.home_window, width=20).pack(side=tk.LEFT, padx=5)
+        
         self.end_game.mainloop()
+
+    def home_window(self):
+        self.button_pressed = 1
+        self.exit_game()
 
     def play_again(self):
         self.button_pressed = 0
-        self.cm.configs["end_game_window"] = self.end_game.geometry()
-        self.cm.save_configs()
-        self.end_game.destroy()
-
-    def exit_game(self):
-        self.button_pressed = 1
-        self.cm.configs["end_game_window"] = self.end_game.geometry()
-        self.cm.save_configs()
-        self.end_game.destroy()
-        self.create_home_window()
-
-    def create_home_window(self):
-        # Create a new instance of HomeWindow
-        from classes.HomeWindow import HomeWindow  # Import HomeWindow here
-        home_window = HomeWindow(self.cm)
-        home_window.home_window.mainloop()
+        self.exit_game()
 
     def save_and_exit(self):
         self.button_pressed = -1
+        self.exit_game()
+
+    def exit_game(self):
         self.cm.configs["end_game_window"] = self.end_game.geometry()
         self.cm.save_configs()
         self.end_game.destroy()

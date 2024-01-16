@@ -1,3 +1,4 @@
+
 def check_window_position(root):
     # Update window and wait for all tasks to complete
     root.update_idletasks()

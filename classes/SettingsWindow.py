@@ -1,4 +1,5 @@
 import tkinter as tk
+from classes.WindowManager import check_window_position
 
 class SettingsWindow:
     def __init__(self, cm):
@@ -7,6 +8,7 @@ class SettingsWindow:
         self.setting_window.title("Settings - MemoryGame")
         self.setting_window.resizable(False, False)
         self.setting_window.geometry(self.cm.configs["settings_window"])
+        check_window_position(self.setting_window)
         self.setting_window.protocol("WM_DELETE_WINDOW", self.save_and_exit)
 
         # Create a label to display the value

@@ -13,6 +13,7 @@ class HomeWindow:
         self.home_window.title("Home - MemoryGame")
         self.home_window.resizable(False, False)
         self.home_window.geometry(self.cm.configs["home_window"])
+        check_window_position(self.home_window)
         self.home_window.protocol("WM_DELETE_WINDOW", self.save_and_exit)
         check_window_position(self.home_window)
         self.hw_ret_value = 0
@@ -40,7 +41,7 @@ class HomeWindow:
         radio1.place(x=370, y=150)
         radio2.place(x=370, y=185)
         radio3.place(x=370, y=220)
-
+    
     def show(self):
         self.home_window.mainloop()
         return self.hw_ret_value
