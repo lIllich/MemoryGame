@@ -53,10 +53,10 @@ class EndGameWindow:
         tk.Label(self.end_game, text=f"Top 10 najboljih rezultata za razinu '{self.razina_num_to_word(self.difficulty_level)}':").pack()
         for i, score in enumerate(scores[:10]):
             if score == self.elapsed_time:
-                label = tk.Label(self.end_game, text=f"{i+1}. {score:.4f} sekunde (tvoj rezultat)", fg="red", font=font.title_text)
+                label = tk.Label(self.end_game, text=f"{i+1}. {score:.1f} sekundi (tvoj rezultat)", fg="red", font=font.title_text)
                 label.pack()
             else:
-                tk.Label(self.end_game, text=f"{i+1}. {score:.4f} sekunde").pack()
+                tk.Label(self.end_game, text=f"{i+1}. {score:.1f} sekundi").pack()
 
     def update_score_table(self):
         scores = self.cm.configs[f"difficulty_{self.difficulty_level}"]
