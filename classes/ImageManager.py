@@ -21,3 +21,7 @@ def tint_card_image(pil_image):
     tint = Image.new('RGBA', pil_image.size, (67, 163, 91, 128))
     return ImageTk.PhotoImage(Image.alpha_composite(pil_image, tint))
 
+def open_image(path):
+    img =  Image.open(path)
+    return ImageTk.PhotoImage(img)
+

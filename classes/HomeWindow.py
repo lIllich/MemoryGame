@@ -4,6 +4,7 @@ from classes.GameWindow import GameWindow
 from classes.EndGameWindow import EndGameWindow
 from classes.FontManager import FontManager as font
 from classes.WindowManager import check_window_position
+from classes.ImageManager import open_image
 
 class HomeWindow:
     def __init__(self, cm):
