@@ -20,7 +20,11 @@ def main():
     cm = ConfigManager(config_file)
     cm.load_configs()
 
-    HomeWindow(cm)
+    while True:
+        hw = HomeWindow(cm)
+        again = hw.show()
+        if again == 0:
+            break
 
 
 if __name__ == "__main__":

@@ -3,6 +3,7 @@ from classes.SettingsWindow import SettingsWindow
 from classes.GameWindow import GameWindow
 from classes.EndGameWindow import EndGameWindow
 from classes.FontManager import FontManager as font
+from classes.WindowManager import check_window_position
 
 class HomeWindow:
     def __init__(self, cm):
@@ -13,6 +14,8 @@ class HomeWindow:
         self.home_window.resizable(False, False)
         self.home_window.geometry(self.cm.configs["home_window"])
         self.home_window.protocol("WM_DELETE_WINDOW", self.save_and_exit)
+        check_window_position(self.home_window)
+        self.hw_ret_value = 0
 
         l_title = tk.Label(self.home_window, text="MemoryGame", font=font.title_text)
         b_play = tk.Button(self.home_window, text="Igraj", font=font.normal_text, command=self.play_now)
@@ -38,7 +41,9 @@ class HomeWindow:
         radio2.place(x=370, y=185)
         radio3.place(x=370, y=220)
 
+    def show(self):
         self.home_window.mainloop()
+        return self.hw_ret_value
 
     def save_and_exit(self):
         self.cm.configs["home_window"] = self.home_window.geometry()
@@ -55,7 +60,10 @@ class HomeWindow:
             gw = GameWindow(self.cm)
             elapsed_time = gw.run_game()
             egw = EndGameWindow(self.cm, elapsed_time)
-            if egw.button_pressed != 0:
+            if egw.button_pressed == 1:
+                self.hw_ret_value = 1
+                break
+            elif egw.button_pressed == -1:
                 break
 
     def open_settings(self):
