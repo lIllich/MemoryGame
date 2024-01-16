@@ -2,316 +2,77 @@
     "category": [
         {
             "id": 1,
-            "type": 0,
-            "active": true,
-            "name": "velika slova",
-            "iterate": "single_string",
-            "cards": [
-                "A",
-                "B",
-                "C",
-                "D",
-                "E",
-                "F",
-                "G",
-                "H",
-                "I",
-                "J",
-                "K",
-                "L",
-                "M",
-                "N",
-                "O",
-                "P",
-                "Q",
-                "R",
-                "S",
-                "T",
-                "U",
-                "V",
-                "W",
-                "X",
-                "Y",
-                "Z",
-                "\u010c",
-                "\u0106",
-                "\u0110",
-                "D\u017d",
-                "\u0160",
-                "\u017d",
-                "LJ",
-                "NJ"
+            "name": "brojevi",
+            "iterate": "single_string_",
+            "cards": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
             ]
         },
         {
             "id": 2,
-            "type": 0,
-            "active": false,
             "name": "velika i mala slova",
-            "iterate": "double_string",
+            "iterate": "double_string_",
             "cards": [
-                {
-                    "value1": "A",
-                    "value2": "a"
-                },
-                {
-                    "value1": "B",
-                    "value2": "b"
-                },
-                {
-                    "value1": "C",
-                    "value2": "c"
-                },
-                {
-                    "value1": "D",
-                    "value2": "d"
-                },
-                {
-                    "value1": "E",
-                    "value2": "e"
-                },
-                {
-                    "value1": "F",
-                    "value2": "f"
-                },
-                {
-                    "value1": "G",
-                    "value2": "g"
-                },
-                {
-                    "value1": "H",
-                    "value2": "h"
-                },
-                {
-                    "value1": "I",
-                    "value2": "i"
-                },
-                {
-                    "value1": "J",
-                    "value2": "j"
-                },
-                {
-                    "value1": "K",
-                    "value2": "k"
-                },
-                {
-                    "value1": "L",
-                    "value2": "l"
-                },
-                {
-                    "value1": "M",
-                    "value2": "m"
-                },
-                {
-                    "value1": "N",
-                    "value2": "n"
-                },
-                {
-                    "value1": "O",
-                    "value2": "o"
-                },
-                {
-                    "value1": "P",
-                    "value2": "p"
-                },
-                {
-                    "value1": "Q",
-                    "value2": "q"
-                },
-                {
-                    "value1": "R",
-                    "value2": "r"
-                },
-                {
-                    "value1": "S",
-                    "value2": "s"
-                },
-                {
-                    "value1": "T",
-                    "value2": "t"
-                },
-                {
-                    "value1": "U",
-                    "value2": "u"
-                },
-                {
-                    "value1": "V",
-                    "value2": "v"
-                },
-                {
-                    "value1": "W",
-                    "value2": "w"
-                },
-                {
-                    "value1": "X",
-                    "value2": "x"
-                },
-                {
-                    "value1": "Y",
-                    "value2": "y"
-                },
-                {
-                    "value1": "Z",
-                    "value2": "z"
-                },
-                {
-                    "value1": "\u010c",
-                    "value2": "\u010d"
-                },
-                {
-                    "value1": "\u0106",
-                    "value2": "\u0107"
-                },
-                {
-                    "value1": "\u0110",
-                    "value2": "\u0111"
-                },
-                {
-                    "value1": "\u0160",
-                    "value2": "\u0161"
-                },
-                {
-                    "value1": "\u017d",
-                    "value2": "\u017e"
-                }
+                {"value1": "A", "value2": "a"},
+                {"value1": "B", "value2": "b"},
+                {"value1": "C", "value2": "c"},
+                {"value1": "D", "value2": "d"},
+                {"value1": "E", "value2": "e"},
+                {"value1": "F", "value2": "f"},
+                {"value1": "G", "value2": "g"},
+                {"value1": "H", "value2": "h"},
+                {"value1": "I", "value2": "i"},
+                {"value1": "J", "value2": "j"},
+                {"value1": "K", "value2": "k"},
+                {"value1": "L", "value2": "l"},
+                {"value1": "M", "value2": "m"},
+                {"value1": "N", "value2": "n"},
+                {"value1": "O", "value2": "o"},
+                {"value1": "P", "value2": "p"},
+                {"value1": "Q", "value2": "q"},
+                {"value1": "R", "value2": "r"},
+                {"value1": "S", "value2": "s"},
+                {"value1": "T", "value2": "t"},
+                {"value1": "U", "value2": "u"},
+                {"value1": "V", "value2": "v"},
+                {"value1": "W", "value2": "w"},
+                {"value1": "X", "value2": "x"},
+                {"value1": "Y", "value2": "y"},
+                {"value1": "Z", "value2": "z"},
+                {"value1": "Č", "value2": "č"},
+                {"value1": "Ć", "value2": "ć"},
+                {"value1": "Đ", "value2": "đ"},
+                {"value1": "Š", "value2": "š"},
+                {"value1": "Ž", "value2": "ž"}
             ]
         },
         {
             "id": 3,
-            "type": 0,
-            "active": true,
-            "name": "\u017eivotinje",
+            "name": "životinje",
             "iterate": "name_and_image",
             "cards": [
-                {
-                    "name": "Pas",
-                    "img": "slike/zivotinje/pug.png"
-                },
-                {
-                    "name": "Ma\u010dka",
-                    "img": "slike/zivotinje/macka.png"
-                },
-                {
-                    "name": "Zec",
-                    "img": "slike/zivotinje/zec.png"
-                },
-                {
-                    "name": "Slon",
-                    "img": "slike/zivotinje/slon.png"
-                },
-                {
-                    "name": "Lav",
-                    "img": "slike/zivotinje/lav.png"
-                },
-                {
-                    "name": "Tigar",
-                    "img": "slike/zivotinje/tigar.png"
-                },
-                {
-                    "name": "Medvjed",
-                    "img": "slike/zivotinje/medo.png"
-                },
-                {
-                    "name": "Majmun",
-                    "img": "slike/zivotinje/majmun.png"
-                },
-                {
-                    "name": "\u017dirafa",
-                    "img": "slike/zivotinje/zirafa.png"
-                },
-                {
-                    "name": "Zebra",
-                    "img": "slike/zivotinje/zebra.png"
-                },
-                {
-                    "name": "Konj",
-                    "img": "slike/zivotinje/konj.png"
-                },
-                {
-                    "name": "Pingvin",
-                    "img": "slike/zivotinje/linux.png"
-                },
-                {
-                    "name": "Patka",
-                    "img": "slike/zivotinje/patka.png"
-                },
-                {
-                    "name": "Ovca",
-                    "img": "slike/zivotinje/ovca.png"
-                },
-                {
-                    "name": "Svinja",
-                    "img": "slike/zivotinje/svinjko.png"
-                },
-                {
-                    "name": "\u017daba",
-                    "img": "slike/zivotinje/zaba.png"
-                },
-                {
-                    "name": "Leptir",
-                    "img": "slike/zivotinje/leptir.png"
-                },
-                {
-                    "name": "Ptica",
-                    "img": "slike/zivotinje/ptica.png"
-                },
-                {
-                    "name": "Riba",
-                    "img": "slike/zivotinje/riba.png"
-                },
-                {
-                    "name": "Krava",
-                    "img": "slike/zivotinje/krava.png"
-                }
-            ]
-        },
-        {
-            "id": 5,
-            "type": 1,
-            "active": false,
-            "name": "kategorija tekst",
-            "iterate": "single_string",
-            "cards": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-        },
-        {
-            "id": 6,
-            "type": 1,
-            "active": false,
-            "name": "kategorija dva teskta",
-            "iterate": "double_string",
-            "cards": []
-        },
-        {
-            "id": 7,
-            "type": 1,
-            "active": false,
-            "name": "kategorija tekst i slika",
-            "iterate": "name_and_image",
-            "cards": [
-                {
-                    "name": "pas",
-                    "value": "slike/zivotinje/pug1.png"
-                },                {
-                    "name": "pas2",
-                    "value": "slike/zivotinje/pug2.png"
-                }
-            ]
-        },
-        {
-            "id": 8,
-            "type": 1,
-            "active": false,
-            "name": "kategorija dvije slike",
-            "iterate": "double_image",
-            "cards": [
-                {
-                    "img1": "slike/zivotinje/pug1.png",
-                    "img2": "slike/zivotinje/pug2.png"
-                },
-                {
-                    "img1": "slike/zivotinje/p1.png",
-                    "img2": "slike/zivotinje/p2.png"
-                }
+                {"name": "Pas", "img":  "slike/zivotinje/pug.png"},
+                {"name": "Mačka", "img":  "slike/zivotinje/macka.png"},
+                {"name": "Zec", "img":  "slike/zivotinje/zec.png"},
+                {"name": "Slon", "img":  "slike/zivotinje/slon.png"},
+                {"name": "Lav", "img":  "slike/zivotinje/lav.png"},
+                {"name": "Tigar", "img":  "slike/zivotinje/tigar.png"},
+                {"name": "Medvjed", "img":  "slike/zivotinje/medo.png"},
+                {"name": "Majmun", "img":  "slike/zivotinje/majmun.png"},
+                {"name": "Žirafa", "img":  "slike/zivotinje/zirafa.png"},
+                {"name": "Zebra", "img":  "slike/zivotinje/zebra.png"},
+                {"name": "Konj", "img":  "slike/zivotinje/konj.png"},
+                {"name": "Pingvin", "img":  "slike/zivotinje/linux.png"},
+                {"name": "Patka", "img":  "slike/zivotinje/patka.png"},
+                {"name": "Ovca", "img":  "slike/zivotinje/ovca.png"},
+                {"name": "Svinja", "img":  "slike/zivotinje/svinjko.png"},
+                {"name": "Žaba", "img":  "slike/zivotinje/zaba.png"},
+                {"name": "Leptir", "img":  "slike/zivotinje/leptir.png"},
+                {"name": "Ptica", "img":  "slike/zivotinje/ptica.png"},
+                {"name": "Riba", "img":  "slike/zivotinje/riba.png"},
+                {"name": "Krava", "img":  "slike/zivotinje/krava.png"},
+                {"name": "Panda", "img": "slike/zivotinje/panda.png"}, 
+                {"name": "Papiga", "img": "slike/zivotinje/papiga.png"}
+
             ]
         }
     ]
