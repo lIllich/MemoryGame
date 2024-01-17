@@ -20,8 +20,7 @@ class ConfigManager:
 
     def new_config_file(self):
         self.configs = {
-            "home_window": "600x300",
-            "game_window": "939x511",
+            "home_window": "829x331",
             "settings_window": "1277x618",
             "end_game_window": "489x384",
             "rows": 4,

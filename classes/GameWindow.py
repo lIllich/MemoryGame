@@ -43,15 +43,12 @@ class GameWindow:
         if self.cm.configs["game_dificulty"] == 1:
             self.cm.configs["rows"] = self.rows = 4
             self.cm.configs["cols"] = self.cols = 6
-            self.game_window.geometry(self.cm.configs["game_window_difficulty_1"])
         elif self.cm.configs["game_dificulty"] == 2:
             self.cm.configs["rows"] = self.rows = 5
             self.cm.configs["cols"] = self.cols = 8
-            self.game_window.geometry(self.cm.configs["game_window_difficulty_2"])
         else:
             self.cm.configs["rows"] = self.rows = 3
             self.cm.configs["cols"] = self.cols = 4
-            self.game_window.geometry(self.cm.configs["game_window_difficulty_0"])
         check_window_position(self.game_window)
         self.cm.save_configs()
 
@@ -178,25 +175,12 @@ class GameWindow:
         self.first = self.second = self.text_item1 = self.text_item2 = self.image_item1 = self.image_item2 = None
 
     def destroy(self):
-        if self.cm.configs["game_dificulty"] == 1:
-            self.cm.configs["game_window_difficulty_1"] = self.game_window.geometry()
-        elif self.cm.configs["game_dificulty"] == 2:
-            self.cm.configs["game_window_difficulty_2"] = self.game_window.geometry()
-        else:
-            self.cm.configs["game_window_difficulty_0"] = self.game_window.geometry()
         self.cm.save_configs()
         if self.after_id:  # Check if after_id exists
             self.game_window.after_cancel(self.after_id)  # Cancel the callback
         self.game_window.destroy()
 
     def save_and_exit(self):
-        if self.cm.configs["game_dificulty"] == 1:
-            self.cm.configs["game_window_difficulty_1"] = self.game_window.geometry()
-        elif self.cm.configs["game_dificulty"] == 2:
-            self.cm.configs["game_window_difficulty_2"] = self.game_window.geometry()
-        else:
-            self.cm.configs["game_window_difficulty_0"] = self.game_window.geometry()
-        self.cm.save_configs()
         if self.after_id:  # Check if after_id exists
             self.game_window.after_cancel(self.after_id)  # Cancel the callback
         self.destroy()
