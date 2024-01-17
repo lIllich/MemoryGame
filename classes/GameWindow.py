@@ -129,12 +129,16 @@ class GameWindow:
         # self.game_window.update_idletasks()
         if self.first is None:
             self.first = (i, j)
+            self.canvases[i][j].unbind("<Enter>")
+            self.canvases[i][j].unbind("<Leave>")
             if self.cards[i * self.cols + j].type == "string":
                 self.text_item1 = self.canvases[i][j].create_text(80, 80, text=self.cards[i * self.cols + j].data, anchor='center', font=("Arial", 20))
             else:
                 self.image_item1 = self.canvases[i][j].create_image(80, 80, image=self.cards[i * self.cols + j].data, anchor='center')
         elif self.second is None:
             self.second = (i, j)
+            self.canvases[i][j].unbind("<Enter>")
+            self.canvases[i][j].unbind("<Leave>")
             if self.cards[i * self.cols + j].type == "string":
                 self.text_item2 = self.canvases[i][j].create_text(80, 80, text=self.cards[i * self.cols + j].data, anchor='center', font=("Arial", 20))
             else:
@@ -147,10 +151,6 @@ class GameWindow:
         if self.cards[i1 * self.cols + j1].id == self.cards[i2 * self.cols + j2].id:
             self.canvases[i1][j1].itemconfig(self.cells[i1][j1], fill=self.from_rgb((67, 163, 91)))  # Change the color of the cell
             self.canvases[i2][j2].itemconfig(self.cells[i2][j2], fill=self.from_rgb((67, 163, 91)))  # Change the color of the cell
-            self.canvases[i1][j1].unbind("<Enter>")
-            self.canvases[i1][j1].unbind("<Leave>")
-            self.canvases[i2][j2].unbind("<Enter>")
-            self.canvases[i2][j2].unbind("<Leave>")
             for item in self.canvases[i1][j1].find_all():
                 if self.canvases[i1][j1].type(item) == 'image':
                     self.cards[i1 * self.cols + j1].tint_picture()
@@ -171,6 +171,10 @@ class GameWindow:
                 self.canvases[i1][j1].delete(self.image_item1)
             if self.image_item2 is not None:
                 self.canvases[i2][j2].delete(self.image_item2)
+            self.canvases[i1][j1].bind("<Enter>", lambda event, i=i1, j=j1: self.hover(i1, j1))
+            self.canvases[i2][j2].bind("<Enter>", lambda event, i=i2, j=j2: self.hover(i2, j2))
+            self.canvases[i1][j1].bind("<Leave>", lambda event: self.cancel_hover())
+            self.canvases[i2][j2].bind("<Leave>", lambda event: self.cancel_hover())
         self.first = self.second = self.text_item1 = self.text_item2 = self.image_item1 = self.image_item2 = None
 
     def destroy(self):
