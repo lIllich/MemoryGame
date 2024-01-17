@@ -16,6 +16,7 @@ class GameWindow:
         self.category_manager.load_categories()
         self.game_window = tk.Tk()
         # self.game_window.resizable(False, False)
+        self.game_window.state('zoomed')
         self.game_window.title("Game - MemoryGame")
         self.game_window.protocol("WM_DELETE_WINDOW", self.save_and_exit)
         
@@ -96,18 +97,26 @@ class GameWindow:
     #         self.buttons.append(row)
 
     def create_canvas_grid(self):
-        self.cell_size = 160 #todo prebaciti u config 
+        self.cell_size = self.cm.configs["cell_size"]
         self.canvases = [[None]*self.cols for _ in range(self.rows)]
-        self.cells = [[None]*self.cols for _ in range(self.rows)]  # Store the IDs of the cells
+        self.cells = [[None]*self.cols for _ in range(self.rows)]
+
+        # Configure the rows and columns of the grid
+        self.game_window.grid_rowconfigure(0, weight=1)
+        self.game_window.grid_rowconfigure(self.rows+1, weight=1)
+        self.game_window.grid_columnconfigure(0, weight=1)
+        self.game_window.grid_columnconfigure(self.cols+1, weight=1)
+
         for i in range(self.rows):
             for j in range(self.cols):
                 canvas = tk.Canvas(self.game_window, width=self.cell_size, height=self.cell_size, highlightbackground="black", highlightthickness=0)
-                canvas.grid(row=i, column=j)
+                canvas.grid(row=i+1, column=j+1)  # Offset the row and column by 1
                 cell = canvas.create_rectangle(0, 0, self.cell_size, self.cell_size, fill='white')
                 canvas.bind("<Enter>", lambda event, i=i, j=j: self.hover(i, j))
                 canvas.bind("<Leave>", lambda event: self.cancel_hover())
                 self.canvases[i][j] = canvas
-                self.cells[i][j] = cell  # Store the ID of the cell
+                self.cells[i][j] = cell
+
 
 
     def hover(self, i, j):

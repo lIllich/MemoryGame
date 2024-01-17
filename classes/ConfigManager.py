@@ -30,6 +30,8 @@ class ConfigManager:
             "font_size": 25,
             "game_dificulty": 1,
             "category": 1,
+            "cell_size": 160,
+            "img_size": 160,
             "on_hover_reveal_card_ms": 500,
             "difficulty_0": [],
             "difficulty_1": [],

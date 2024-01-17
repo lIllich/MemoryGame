@@ -32,7 +32,7 @@ class HomeWindow:
         l_razina = tk.Label(self.home_window, text="Razina:", font=font.subtitle_text)
         l_razina.place(x=350, y=115)
         # Create a StringVar to hold the value of the radio buttons
-        self.game_difficulty = tk.IntVar(value=1)
+        self.game_difficulty = tk.IntVar(value=self.cm.configs["game_dificulty"])
 
         # Create the radio buttons
         radio1 = tk.Radiobutton(self.home_window, text='Jednostavno', font=font.normal_text, value=0, variable=self.game_difficulty)
