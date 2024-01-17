@@ -29,6 +29,7 @@ class ConfigManager:
             "font_name": "Helvetica",
             "font_size": 25,
             "game_dificulty": 1,
+            "category": 1,
             "on_hover_reveal_card_ms": 500,
             "difficulty_0": [],
             "difficulty_1": [],

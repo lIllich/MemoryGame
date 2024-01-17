@@ -2,51 +2,6 @@
     "category": [
         {
             "id": 1,
-            "name": "brojevi",
-            "iterate": "single_string_",
-            "cards": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
-            ]
-        },
-        {
-            "id": 2,
-            "name": "velika i mala slova",
-            "iterate": "double_string_",
-            "cards": [
-                {"value1": "A", "value2": "a"},
-                {"value1": "B", "value2": "b"},
-                {"value1": "C", "value2": "c"},
-                {"value1": "D", "value2": "d"},
-                {"value1": "E", "value2": "e"},
-                {"value1": "F", "value2": "f"},
-                {"value1": "G", "value2": "g"},
-                {"value1": "H", "value2": "h"},
-                {"value1": "I", "value2": "i"},
-                {"value1": "J", "value2": "j"},
-                {"value1": "K", "value2": "k"},
-                {"value1": "L", "value2": "l"},
-                {"value1": "M", "value2": "m"},
-                {"value1": "N", "value2": "n"},
-                {"value1": "O", "value2": "o"},
-                {"value1": "P", "value2": "p"},
-                {"value1": "Q", "value2": "q"},
-                {"value1": "R", "value2": "r"},
-                {"value1": "S", "value2": "s"},
-                {"value1": "T", "value2": "t"},
-                {"value1": "U", "value2": "u"},
-                {"value1": "V", "value2": "v"},
-                {"value1": "W", "value2": "w"},
-                {"value1": "X", "value2": "x"},
-                {"value1": "Y", "value2": "y"},
-                {"value1": "Z", "value2": "z"},
-                {"value1": "Č", "value2": "č"},
-                {"value1": "Ć", "value2": "ć"},
-                {"value1": "Đ", "value2": "đ"},
-                {"value1": "Š", "value2": "š"},
-                {"value1": "Ž", "value2": "ž"}
-            ]
-        },
-        {
-            "id": 3,
             "name": "životinje",
             "iterate": "name_and_image",
             "cards": [
@@ -72,8 +27,37 @@
                 {"name": "Krava", "img":  "slike/zivotinje/krava.png"},
                 {"name": "Panda", "img": "slike/zivotinje/panda.png"}, 
                 {"name": "Papiga", "img": "slike/zivotinje/papiga.png"}
-
+            ]
+        }, 
+        {
+            "id": 2,
+            "name": "svakodnevnica",
+            "iterate": "image_and__image",
+            "cards": [
+                {"img1": "slike/svakodnevica/bus.png", "img2":  "slike/svakodnevica/auto.png"},
+                {"img1": "slike/svakodnevica/bicikla.png", "img2":  "slike/svakodnevica/kaciga.png"},
+                {"img1": "slike/svakodnevica/carapa.png", "img2":  "slike/svakodnevica/noga.png"},
+                {"img1": "slike/svakodnevica/cesta.png", "img2":  "slike/svakodnevica/semafor.png"},
+                {"img1": "slike/svakodnevica/cetkica-za-zube.png", "img2":  "slike/svakodnevica/pasta-za-zube.png"},
+                {"img1": "slike/svakodnevica/djecak.png", "img2":  "slike/svakodnevica/djevojcica.png"},
+                {"img1": "slike/svakodnevica/lopta.png", "img2":  "slike/svakodnevica/gol.png"},
+                {"img1": "slike/svakodnevica/jastuk.png", "img2":  "slike/svakodnevica/krevet.png"},
+                {"img1": "slike/svakodnevica/kisa.png", "img2":  "slike/svakodnevica/kisobran.png"},
+                {"img1": "slike/svakodnevica/kljuc.png", "img2":  "slike/svakodnevica/kljucanica.png"},
+                {"img1": "slike/svakodnevica/kovanice.png", "img2":  "slike/svakodnevica/novcanice.png"},
+                {"img1": "slike/svakodnevica/kucni-ljubimac.png", "img2":  "slike/svakodnevica/posuda-za-hranu.png"},
+                {"img1": "slike/svakodnevica/kuhar.png", "img2":  "slike/svakodnevica/lonac.png"},
+                {"img1": "slike/svakodnevica/matica.png", "img2":  "slike/svakodnevica/vijak.png"},
+                {"img1": "slike/svakodnevica/olovka.png", "img2":  "slike/svakodnevica/siljilo.png"},
+                {"img1": "slike/svakodnevica/pranje-ruku.png", "img2":  "slike/svakodnevica/sapun.png"},
+                {"img1": "slike/svakodnevica/pribor-za-jelo.png", "img2":  "slike/svakodnevica/tanjur.png"},
+                {"img1": "slike/svakodnevica/reket.png", "img2":  "slike/svakodnevica/teniska-loptica.png"},
+                {"img1": "slike/svakodnevica/snijeg.png", "img2":  "slike/svakodnevica/snjegovic.png"},
+                {"img1": "slike/svakodnevica/suncane-naocale.png", "img2":  "slike/svakodnevica/sunce.png"},
+                {"img1": "slike/svakodnevica/televizija.png", "img2": "slike/svakodnevica/upravljac.png"}
             ]
         }
     ]
 }
+
+

@@ -14,9 +14,11 @@ from classes.ConfigManager import ConfigManager
 #todo: manager za konvertiranje slika u ogovarajuci format
 #todo//: starter - poseban json sa gotovim(predinstaliranim) kategorijama, npr. slova, brojevi, neke slike...
 # todo// : velika slova
-#! todo: dodati jos jednu kategoriju - svakodnevica
+#!// todo: dodati jos jednu kategoriju - svakodnevica
 #! todo: full screen, grid na sredini
-#! todo: homewindow - biranje kategorije
+#!// todo: homewindow - biranje kategorije
+
+#! bug: oznacavanje kartica
 
 def main():
     config_file = "config.json"

@@ -12,7 +12,7 @@ class HomeWindow:
         self.cm = cm
 
         self.home_window.title("Home - MemoryGame")
-        self.home_window.resizable(False, False)
+        # self.home_window.resizable(False, False)
         self.home_window.geometry(self.cm.configs["home_window"])
         check_window_position(self.home_window)
         self.home_window.protocol("WM_DELETE_WINDOW", self.save_and_exit)
@@ -24,7 +24,7 @@ class HomeWindow:
         b_settings = tk.Button(self.home_window, text="Postavke", font=font.normal_text, command=self.open_settings)
         b_exit = tk.Button(self.home_window, text="Izlaz", font=font.normal_text, command=self.save_and_exit)
 
-        l_title.place(x=200, y=35)
+        l_title.place(x=320, y=35)
         b_play.place(x=80, y=100, width=200, height=50)
         b_settings.place(x=80, y=155, width=200, height=50)
         b_exit.place(x=80, y=210, width=200, height=50)
@@ -42,6 +42,18 @@ class HomeWindow:
         radio1.place(x=370, y=150)
         radio2.place(x=370, y=185)
         radio3.place(x=370, y=220)
+
+        l_razina = tk.Label(self.home_window, text="Izaberi:", font=font.subtitle_text)
+        l_razina.place(x=550, y=115)
+        # Create a StringVar to hold the value of the radio buttons
+        self.choose_category = tk.IntVar(value=self.cm.configs["category"])
+
+        # Create the radio buttons
+        radio1 = tk.Radiobutton(self.home_window, text='Životinje', font=font.normal_text, value=1, variable=self.choose_category)
+        radio2 = tk.Radiobutton(self.home_window, text='Svakodnevne pojave', font=font.normal_text, value=2, variable=self.choose_category)
+
+        radio1.place(x=570, y=150)
+        radio2.place(x=570, y=185)
     
     def show(self):
         self.home_window.mainloop()
@@ -50,12 +62,14 @@ class HomeWindow:
     def save_and_exit(self):
         self.cm.configs["home_window"] = self.home_window.geometry()
         self.cm.configs["game_dificulty"] = self.game_difficulty.get()
+        self.cm.configs["category"] = self.choose_category.get()
         self.cm.save_configs()
         self.home_window.quit()
 
     def play_now(self):
         self.cm.configs["home_window"] = self.home_window.geometry()
         self.cm.configs["game_dificulty"] = self.game_difficulty.get()
+        self.cm.configs["category"] = self.choose_category.get()
         self.cm.save_configs()
         self.home_window.destroy()
         while True:
@@ -71,5 +85,6 @@ class HomeWindow:
     def open_settings(self):
         self.cm.configs["home_window"] = self.home_window.geometry()
         self.cm.configs["game_dificulty"] = self.game_difficulty.get()
+        self.cm.configs["category"] = self.choose_category.get()
         self.cm.save_configs()
         SettingsWindow(self.cm)

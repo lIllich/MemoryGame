@@ -57,22 +57,24 @@ class GameWindow:
     def create_letter_list(self):
         id = 0
         for category in self.category_manager.category['category']:
-            if category['iterate'] == 'single_string':
-                for card in category['cards']:
-                    self.cards.append((Card(id, 'string', card), Card(id, 'string', card)))
-                    id += 1
-            elif category['iterate'] == 'double_string':
-                for card in category['cards']:
-                    self.cards.append((Card(id, 'string', card["value1"]), Card(id, 'string', card["value2"])))
-                    id += 1
-            elif category['iterate'] == 'name_and_image':
+            # if category['iterate'] == 'single_string':
+            #     for card in category['cards']:
+            #         self.cards.append((Card(id, 'string', card), Card(id, 'string', card)))
+            #         id += 1
+            # elif category['iterate'] == 'double_string':
+            #     for card in category['cards']:
+            #         self.cards.append((Card(id, 'string', card["value1"]), Card(id, 'string', card["value2"])))
+            #         id += 1
+            # el
+            if category['iterate'] == 'name_and_image' and self.cm.configs["category"] == 1:
                 for card in category['cards']:
                     self.cards.append((Card(id, 'string', card["name"].upper()), Card(id, 'img_path', card["img"])))
                     id += 1
-            elif category['iterate'] == 'image_and_image':
+            elif category['iterate'] == 'image_and__image' and self.cm.configs["category"] == 2:
                 for card in category['cards']:
-                    self.cards.append((Card(id, 'string', card["img1"]), Card(id, 'img_path', card["img2"])))
+                    self.cards.append((Card(id, 'img_path', card["img1"]), Card(id, 'img_path', card["img2"])))
                     id += 1
+
 
         random.shuffle(self.cards)
         self.cards = self.cards[: self.rows * self.cols //2]
