@@ -11,7 +11,7 @@ class HomeWindow:
         self.home_window = tk.Tk()
         self.cm = cm
 
-        self.home_window.title("Home - MemoryGame")
+        self.home_window.title("Home - Spari Pogledom")
         # self.home_window.resizable(False, False)
         self.home_window.geometry(self.cm.configs["home_window"])
         check_window_position(self.home_window)
@@ -19,7 +19,7 @@ class HomeWindow:
         check_window_position(self.home_window)
         self.hw_ret_value = 0
 
-        l_title = tk.Label(self.home_window, text="MemoryGame", font=font.title_text)
+        l_title = tk.Label(self.home_window, text="Spari Pogledom", font=font.title_text)
         b_play = tk.Button(self.home_window, text="Igraj", font=font.normal_text, command=self.play_now)
         b_settings = tk.Button(self.home_window, text="Postavke", font=font.normal_text, command=self.open_settings)
         b_exit = tk.Button(self.home_window, text="Izlaz", font=font.normal_text, command=self.save_and_exit)

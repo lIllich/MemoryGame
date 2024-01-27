@@ -17,7 +17,7 @@ class GameWindow:
         self.game_window = tk.Tk()
         # self.game_window.resizable(False, False)
         self.game_window.state('zoomed')
-        self.game_window.title("Game - MemoryGame")
+        self.game_window.title("Game - Spari Pogledom")
         self.game_window.protocol("WM_DELETE_WINDOW", self.save_and_exit)
         
         self.canvases = []

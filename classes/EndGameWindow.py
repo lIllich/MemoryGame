@@ -10,7 +10,7 @@ class EndGameWindow:
         self.button_pressed = None
         self.end_game.geometry(self.cm.configs["end_game_window"])
         self.end_game.protocol("WM_DELETE_WINDOW", self.save_and_exit)
-        self.end_game.title("Score Table - MemoryGame")
+        self.end_game.title("Score Table - Spari Pogledom")
 
         if self.elapsed_time is None:
             tk.Label(self.end_game, text=f"Igra je prekinuta").pack()

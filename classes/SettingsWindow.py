@@ -5,8 +5,8 @@ class SettingsWindow:
     def __init__(self, cm):
         self.cm = cm
         self.setting_window = tk.Toplevel()
-        self.setting_window.title("Settings - MemoryGame")
-        self.setting_window.resizable(False, False)
+        self.setting_window.title("Settings - Spari Pogledom")
+        # self.setting_window.resizable(False, False)
         self.setting_window.geometry(self.cm.configs["settings_window"])
         check_window_position(self.setting_window)
         self.setting_window.protocol("WM_DELETE_WINDOW", self.save_and_exit)
