@@ -1,6 +1,8 @@
 from classes.HomeWindow import HomeWindow
 from classes.ConfigManager import ConfigManager
-
+from classes.Constants import Constants
+import os
+import ctypes
 #!// bug - kada se close-a GameWindow u sred igre, javi exception
 #!// bug - extended display, ako se window prikaze izvan dozovljenih granica (displaya) -> vrati ga
 #!// bug - kada se na kartici koja je pronađena (zelena) mouse pointer zadrži dulje od 1sek i potom makne, u buttonu text posetane ''
@@ -21,9 +23,13 @@ from classes.ConfigManager import ConfigManager
 #!// bug: oznacavanje kartica
 
 def main():
-    config_file = "config.json"
+    c = Constants()
+    if not os.path.exists(c.USER_FOLDER):
+        # Show an error message box
+        ctypes.windll.user32.MessageBoxW(0, "Nedostaju bitne datoteke. Potrebno ponoviti instalaciju.", "Greška - Spari Pogledom", 16)
+        return
 
-    cm = ConfigManager(config_file)
+    cm = ConfigManager(c.USER_FOLDER + "\\config.json")
     cm.load_configs()
 
     while True:
@@ -31,7 +37,6 @@ def main():
         again = hw.show()
         if again == 0:
             break
-
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,7 @@
 import tkinter as tk
 from classes.CategoryManager import CategoryManager
 from classes.Card import Card
+from classes.Constants import Constants
 
 import numpy as np
 import random
@@ -10,12 +11,13 @@ from classes.WindowManager import check_window_position
 
 class GameWindow:
     def __init__(self, cm):
+        self.c = Constants()
         self.cm = cm
-        self.category_manager = CategoryManager("categories.json")
+        self.category_manager = CategoryManager(self.c.USER_FOLDER + "\\categories.json")
         
         self.category_manager.load_categories()
         self.game_window = tk.Tk()
-        # self.game_window.resizable(False, False)
+        self.game_window.resizable(False, False)
         self.game_window.state('zoomed')
         self.game_window.title("Game - Spari Pogledom")
         self.game_window.protocol("WM_DELETE_WINDOW", self.save_and_exit)
@@ -66,11 +68,11 @@ class GameWindow:
             # el
             if category['iterate'] == 'name_and_image' and self.cm.configs["category"] == 1:
                 for card in category['cards']:
-                    self.cards.append((Card(id, 'string', card["name"].upper()), Card(id, 'img_path', card["img"])))
+                    self.cards.append((Card(id, 'string', card["name"].upper()), Card(id, 'img_path', self.c.USER_FOLDER + "\\" + card["img"])))
                     id += 1
             elif category['iterate'] == 'image_and__image' and self.cm.configs["category"] == 2:
                 for card in category['cards']:
-                    self.cards.append((Card(id, 'img_path', card["img1"]), Card(id, 'img_path', card["img2"])))
+                    self.cards.append((Card(id, 'img_path', self.c.USER_FOLDER + "\\" + card["img1"]), Card(id, 'img_path', self.c.USER_FOLDER + "\\" + card["img2"])))
                     id += 1
 
 
